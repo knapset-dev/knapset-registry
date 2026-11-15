@@ -1,0 +1,15 @@
+{
+  "name": "value_composer",
+  "subsystem": "build_composer",
+  "domain": "hardware_pc",
+  "version": "1.0.0",
+  "author": "HardwareCommunity",
+  "description": "Build synthesizer focused on maximum FPS per budget unit",
+  "min_app_version": "1.0.0",
+  "trust_level": "official",
+  "source_type": "single_file",
+  "download_url": "modules/build_composer/value_composer.py",
+  "sha256": "3517b0b478210064a82c883a6caadbf5f9e86ea704a1963dda643daf173a4643",
+  "tags": ["pc", "build", "value", "fps"],
+  "env_keys": []
+}

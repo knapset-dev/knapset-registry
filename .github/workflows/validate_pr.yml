@@ -1,0 +1,29 @@
+name: Validate Module Submission
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: AST Security & Contract Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Submission Validator
+        run: |
+          python3 scripts/validate_submission.py --markdown-out pr_report.md
+          cat pr_report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Verify Index Consistency
+        run: |
+          python3 scripts/build_index.py --check

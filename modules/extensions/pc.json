@@ -1,0 +1,23 @@
+{
+  "name": "pc",
+  "subsystem": "extension",
+  "domain": "pc",
+  "version": "1.0.0",
+  "author": "omniforge-dev",
+  "description": "Official PC Builder & Hardware Intelligence Extension: GPU, CPU, MOBO, RAM, and PSU analyzers with combinatorial build synthesis.",
+  "min_app_version": "1.0.0",
+  "trust_level": "official",
+  "source_type": "directory",
+  "download_url": "modules/extensions/pc",
+  "sha256": "631fe220a580a31ee44e7ed83f8eea3fb7d10caad7150ba7b4967a3ee86f9744",
+  "tags": [
+    "pc",
+    "hardware",
+    "builder",
+    "gaming",
+    "synthesizer",
+    "official"
+  ],
+  "env_keys": [],
+  "dependencies": []
+}

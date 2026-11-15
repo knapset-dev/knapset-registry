@@ -1,0 +1,47 @@
+name: Build & Publish Registry Index
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "modules/**"
+      - "bundles/**"
+      - "scripts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Auto-Compile registry.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate All Modules
+        run: |
+          python3 scripts/validate_submission.py
+
+      - name: Compile Master Index
+        run: |
+          python3 scripts/build_index.py
+
+      - name: Commit and Push Updated Index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain registry.json) ]]; then
+            git add registry.json
+            git commit -m "chore(registry): update master index [skip ci]"
+            git push
+          else
+            echo "registry.json is already up-to-date."
+          fi

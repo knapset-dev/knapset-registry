@@ -1,0 +1,12 @@
+{
+  "name": "pc-starter-kit",
+  "description": "Complete starter kit for PC hardware intelligence (PC builder domain & evaluator, sample data provider, reball scam analyzer, value optimizer)",
+  "domain": "pc",
+  "modules": [
+    "pc",
+    "sample_provider",
+    "reball_detector",
+    "value_composer"
+  ],
+  "tags": ["pc", "starter", "kit", "builder", "evaluator", "official"]
+}

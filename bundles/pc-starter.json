@@ -1,0 +1,12 @@
+{
+  "name": "pc-starter",
+  "description": "Base recommended bundle for PC hardware discovery and synthesis (domain extension with build/eval, provider, reball detector, value optimizer)",
+  "domain": "hardware_pc",
+  "modules": [
+    "pc",
+    "sample_provider",
+    "reball_detector",
+    "value_composer"
+  ],
+  "tags": ["pc", "starter", "official"]
+}

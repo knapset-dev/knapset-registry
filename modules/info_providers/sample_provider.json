@@ -1,0 +1,15 @@
+{
+  "name": "sample_provider",
+  "subsystem": "info_providers",
+  "domain": "general",
+  "version": "1.0.0",
+  "author": "omniforge-dev",
+  "description": "Reference BaseInfoProvider skeleton returning deterministic sample listings",
+  "min_app_version": "1.0.0",
+  "trust_level": "verified",
+  "source_type": "single_file",
+  "download_url": "modules/info_providers/sample_provider.py",
+  "sha256": "178566a5e2a1d5e9227cc3318163003b0951984645444e31f8ca7e7b97f60708",
+  "tags": ["sample", "provider", "reference"],
+  "env_keys": []
+}

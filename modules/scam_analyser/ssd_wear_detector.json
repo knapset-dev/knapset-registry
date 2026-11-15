@@ -1,0 +1,15 @@
+{
+  "name": "ssd_wear_detector",
+  "subsystem": "scam_analyser",
+  "domain": "hardware_pc",
+  "version": "1.0.0",
+  "author": "HardwareCommunity",
+  "description": "Analyzes counterfeit SSD controllers and fake NAND capacity (packaged directory module)",
+  "min_app_version": "1.0.0",
+  "trust_level": "verified",
+  "source_type": "directory",
+  "download_url": "modules/scam_analyser/ssd_wear_detector",
+  "sha256": "2e51969606b149d1375fed88d9331d5637a75921978d16019456c301815bdddd",
+  "tags": ["storage", "ssd", "scam", "nand"],
+  "env_keys": []
+}
