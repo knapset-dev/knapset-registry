@@ -75,8 +75,8 @@ BUILTIN_MODES: Dict[str, ModeProfile] = {
     ),
     "value": ModeProfile(
         name="value",
-        title="Pure Cost Efficiency (₴/FPS)",
-        description="Ranks verified working hardware strictly by lowest ₴/FPS, ₴/GB, and ₴/Watt cost efficiency.",
+        title="Pure Cost Efficiency ($/FPS)",
+        description="Ranks verified working hardware strictly by lowest $/FPS, $/GB, and $/Watt cost efficiency.",
         max_risk=40,
         require_delivery=True,
         weights={"value": 0.65, "perf": 0.20, "deal": 0.10, "safety": 0.05},
@@ -84,7 +84,7 @@ BUILTIN_MODES: Dict[str, ModeProfile] = {
     "safe": ModeProfile(
         name="safe",
         title="Fortress Zero-Risk",
-        description="Strictest buyer protection: Risk <= 15, mandatory OLX Delivery, blocks ex-mining CRITICAL eras, prioritizes brand-new hardware and Tier A/B PSUs.",
+        description="Strictest buyer protection: Risk <= 15, mandatory buyer-protected delivery, blocks ex-mining CRITICAL eras, prioritizes brand-new hardware and Tier A/B PSUs.",
         max_risk=15,
         require_delivery=True,
         block_critical_arch=True,
@@ -154,7 +154,7 @@ BUILTIN_MODES: Dict[str, ModeProfile] = {
     "budget-king": ModeProfile(
         name="budget-king",
         title="Sub-Budget Bang-for-Buck",
-        description="Optimized for tight budgets (AM4 / LGA1700 DDR4 / RX 6600 / RTX 3060): maximum playable 1080p per hryvnia without broken traps.",
+        description="Optimized for tight budgets (AM4 / LGA1700 DDR4 / RX 6600 / RTX 3060): maximum playable 1080p per dollar without broken traps.",
         max_risk=32,
         require_delivery=True,
         weights={"value": 0.46, "perf": 0.26, "deal": 0.16, "safety": 0.12},

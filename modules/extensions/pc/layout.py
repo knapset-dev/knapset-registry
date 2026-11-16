@@ -198,12 +198,25 @@ def _pc_headline_formatter(
     from analyzer_core import fmt_deal_pct
     line2_right = f"Mkt: {fmt_deal_pct(avg_disc)}"
 
+    from currency import CURRENCY_SYMBOLS, canonical_currency
     cost_per_fps = total_cost / max(1.0, fps_1440)
     fps_per_1k = (fps_1440 / max(1.0, total_cost)) * 1000.0
-    val_left = f"Perf/Value: ~{cost_per_fps:.0f} {curr}/fps (1440p)"
-    val_mid = f"~{fps_per_1k:.1f} fps / 1k {curr}"
-    gpu_p = float(g.get("price", 0.0))
-    val_right = f"GPU: ~{gpu_p / max(1.0, fps_1440):.0f} {curr}/fps"
+    c_canon = canonical_currency(curr)
+    c_sym, is_suffix = CURRENCY_SYMBOLS.get(c_canon, (c_canon, True))
+    val_left = (
+        f"Perf/Value: ~{cost_per_fps:.0f} {c_sym}/fps (1440p)"
+        if is_suffix
+        else f"Perf/Value: ~{c_sym}{cost_per_fps:.0f}/fps (1440p)"
+    )
+    val_mid = (
+        f"~{fps_per_1k:.1f} fps / 1k {c_sym}"
+        if is_suffix
+        else f"~{fps_per_1k:.1f} fps / {c_sym}1k"
+    )
+    parts = [x for x in (comps.get(k) for k in ("gpu", "cpu", "mobo", "ram", "psu")) if isinstance(x, dict)]
+    avg_risk = sum((x.get("eval") or x.get("heuristic") or {}).get("risk_score", 0) for x in parts) / max(1, len(parts))
+    cpu_ratio = float(set_entry.get("cpu_ratio", 1.0))
+    val_right = f"Risk: {avg_risk:.0f}/100 │ Balance: {cpu_ratio:.2f}x"
 
     return title_col, score_col, surplus_str, line2_left, line2_mid, line2_right, val_left, val_mid, val_right
 

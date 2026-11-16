@@ -2023,20 +2023,39 @@ def run_build_optimizer(
         elif outlet_cnt > 0:
             mkt_col += f" │ {outlet_cnt} Outlet"
 
+        from currency import CURRENCY_SYMBOLS, canonical_currency
         t_cost = float(b["total_cost"])
         fps_1440 = float(b["eff_fps_1440p"])
         cost_per_fps = t_cost / max(1.0, fps_1440)
         fps_per_1k = (fps_1440 / max(1.0, t_cost)) * 1000.0
-        val_left = f"Perf/Value: ~{cost_per_fps:.0f} {effective_curr}/fps (1440p)"
-        val_mid = f"~{fps_per_1k:.1f} fps / 1k {effective_curr}"
-        gpu_p = float(g.get("price", 0.0))
-        val_right = f"GPU: ~{gpu_p / max(1.0, fps_1440):.0f} {effective_curr}/fps"
+        c_canon = canonical_currency(effective_curr)
+        c_sym, is_suffix = CURRENCY_SYMBOLS.get(c_canon, (c_canon, True))
+        val_left = (
+            f"Perf/Value: ~{cost_per_fps:.0f} {c_sym}/fps (1440p)"
+            if is_suffix
+            else f"Perf/Value: ~{c_sym}{cost_per_fps:.0f}/fps (1440p)"
+        )
+        val_mid = (
+            f"~{fps_per_1k:.1f} fps / 1k {c_sym}"
+            if is_suffix
+            else f"~{fps_per_1k:.1f} fps / {c_sym}1k"
+        )
+        cpu_ratio = float(b.get("cpu_ratio", 1.0))
+        val_right = f"Risk: {avg_risk:.0f}/100 │ Balance: {cpu_ratio:.2f}x"
 
-        print("━" * 82)
-        print(f"{title_col:<39}│  {score_col:<23}│  {surplus_col}")
-        print(f"{fps_col:<39}│  {load_col:<23}│  {mkt_col}")
-        print(f"{val_left:<39}│  {val_mid:<23}│  {val_right}")
-        print("─" * 82)
+        def _vis_len(txt: str) -> int:
+            return len(re.sub(r"\x1b\[[0-9;]*m|\x1b\]8;;.*?\x1b\\", "", txt))
+
+        left_w = max(42, _vis_len(title_col) + 2, _vis_len(fps_col) + 2, _vis_len(val_left) + 2)
+        mid_w = max(27, _vis_len(score_col) + 2, _vis_len(load_col) + 2, _vis_len(val_mid) + 2)
+        right_w = max(29, _vis_len(surplus_col), _vis_len(mkt_col), _vis_len(val_right))
+        rule_w = max(104, left_w + 3 + mid_w + 3 + right_w)
+
+        print("━" * rule_w)
+        print(f"{pad_ansi(title_col, left_w)}│  {pad_ansi(score_col, mid_w)}│  {surplus_col}")
+        print(f"{pad_ansi(fps_col, left_w)}│  {pad_ansi(load_col, mid_w)}│  {mkt_col}")
+        print(f"{pad_ansi(val_left, left_w)}│  {pad_ansi(val_mid, mid_w)}│  {val_right}")
+        print("─" * rule_w)
 
         c_l3 = c["spec"].get("l3_cache_mb", 32)
         c_low = c["spec"].get("fps_1pct_low", c["fps_gaming"] * 0.73)
@@ -2057,8 +2076,8 @@ def run_build_optimizer(
             ("PSU", p["model"], p["price"], p, f"{p['wattage']}W", f"{p_tier_clean}"),
         ]
 
+        formatted_rows = []
         for label, name, pr, comp, spec1, spec2 in rows:
-            linked_name = pad_ansi(make_terminal_link(comp.get("url", ""), name[:19]), 22)
             if comp.get("is_owned"):
                 price_str = f"(OWNED │ {format_price(0, effective_curr)})"
             elif comp.get("is_bundle"):
@@ -2071,8 +2090,7 @@ def run_build_optimizer(
             else:
                 deal_s = fmt_deal_pct(comp.get("discount_pct", 0.0))
                 price_str = f"{format_price(pr, effective_curr)} ({deal_s})"
-            price_padded = pad_ansi(price_str, 17)
-            spec1_padded = pad_ansi(spec1, 17)
+
             is_new_part = bool(comp.get("is_new") or comp.get("condition") == "new")
             cond_val = str(comp.get("condition") or "").lower()
             if comp.get("is_prebuilt"):
@@ -2086,6 +2104,15 @@ def run_build_optimizer(
             else:
                 tag = ""
             spec2_str = f"{spec2}{tag}"
+            formatted_rows.append((label, name, comp, price_str, spec1, spec2_str))
+
+        price_w = max([22] + [_vis_len(r_p) + 3 for _, _, _, r_p, _, _ in formatted_rows])
+        spec1_w = max([19] + [_vis_len(r_s1) + 3 for _, _, _, _, r_s1, _ in formatted_rows])
+
+        for label, name, comp, price_str, spec1, spec2_str in formatted_rows:
+            linked_name = pad_ansi(make_terminal_link(comp.get("url", ""), name[:19]), 22)
+            price_padded = pad_ansi(price_str, price_w)
+            spec1_padded = pad_ansi(spec1, spec1_w)
 
             print(f"  • {label:<7}{linked_name}{price_padded}{spec1_padded}{spec2_str}")
 
