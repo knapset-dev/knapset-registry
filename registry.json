@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "omniforge-registry",
   "description": "Official open module & extension registry for OmniForge",
-  "generated_at": "2026-11-16T10:31:38.647122+00:00",
+  "generated_at": "2026-11-16T10:33:53.232717+00:00",
   "modules": [
     {
       "name": "value_composer",
