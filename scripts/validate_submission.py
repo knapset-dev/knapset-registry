@@ -627,7 +627,7 @@ def generate_markdown_summary(reports: List[ValidationReport]) -> str:
     failed = total - passed
 
     lines = [
-        "## OmniForge Registry — Automated PR Validation",
+        "## Knapset Registry — Automated PR Validation",
         "",
         f"**Status**: {'[PASS] All Checks Passed' if failed == 0 else '[FAIL] Security or Contract Violations Detected'}",
         f"- **Modules Scanned**: {total}",

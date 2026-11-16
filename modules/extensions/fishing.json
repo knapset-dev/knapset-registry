@@ -3,7 +3,7 @@
   "subsystem": "extension",
   "domain": "fishing",
   "version": "1.0.0",
-  "author": "omniforge-dev",
+  "author": "knapset-dev",
   "description": "Official Fishing Tackle Set Synthesizer Extension: matches rods, reels, lines, baits, and tackle accessories with balance and drag rules.",
   "min_app_version": "1.0.0",
   "trust_level": "official",

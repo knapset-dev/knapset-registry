@@ -1,6 +1,6 @@
-# Omniforge Registry
+# Knapset Registry
 
-`omniforge-registry` is the official plugin and domain-extension repository for [Omniforge](https://github.com/omniforge-dev/omniforge). Omniforge's core repository stays domain-agnostic (shipping only the minimal `template` domain); concrete domain logic across different verticals (PC hardware, fishing tackle, custom adapters, and defect analyzers) lives here and is installed on demand via `python3 main.py market install <id>`.
+`knapset-registry` is the official plugin and domain-extension repository for [Knapset](https://github.com/knapset-dev/knapset). Knapset's core repository stays domain-agnostic (shipping only the minimal `template` domain); concrete domain logic across different verticals (PC hardware, fishing tackle, custom adapters, and defect analyzers) lives here and is installed on demand via `python3 main.py market install <id>`.
 
 ---
 
@@ -20,18 +20,18 @@
 - **`photo-kit.json`** — minimal example bundle containing `sample_provider`.
 - **`pc-starter.json`** / **`pc-starter-kit.json`** — installs `pc` alongside supporting standalone modules.
 
-> **Note on standalone plugin wiring**: In the current architecture, `domain_extension` packages (`fishing`, `pc`) execute their own self-contained screening and synthesis pipelines when invoked via `python3 main.py <domain> ...`. Standalone `scam_analyser` and `build_composer` plugins register into Omniforge's plugin registries independently.
+> **Note on standalone plugin wiring**: In the current architecture, `domain_extension` packages (`fishing`, `pc`) execute their own self-contained screening and synthesis pipelines when invoked via `python3 main.py <domain> ...`. Standalone `scam_analyser` and `build_composer` plugins register into Knapset's plugin registries independently.
 
 ---
 
-## Using this registry with Omniforge
+## Using this registry with Knapset
 
-### From GitHub (default in Omniforge)
+### From GitHub (default in Knapset)
 
-Omniforge points to `https://raw.githubusercontent.com/omniforge-dev/omniforge-registry/main/registry.json` by default:
+Knapset points to `https://raw.githubusercontent.com/knapset-dev/knapset-registry/main/registry.json` by default:
 
 ```bash
-cd /path/to/omniforge
+cd /path/to/knapset
 python3 main.py market list
 python3 main.py market install fishing
 python3 main.py market install pc
@@ -39,10 +39,10 @@ python3 main.py market install pc
 
 ### From a local checkout (for development)
 
-If you are editing files in `omniforge-registry` locally and want Omniforge to install from your working tree:
+If you are editing files in `knapset-registry` locally and want Knapset to install from your working tree:
 
 ```bash
-export OMNIFORGE_REGISTRY_URL="file:///absolute/path/to/omniforge-registry/registry.json"
+export KNAPSET_REGISTRY_URL="file:///absolute/path/to/knapset-registry/registry.json"
 python3 main.py market install <extension-id>
 ```
 
@@ -50,7 +50,7 @@ python3 main.py market install <extension-id>
 
 ## Integrity and verification
 
-Single-file modules in `registry.json` carry a `"sha256"` field checked by Omniforge's `MarketplaceClient` before installation. If you edit a single-file module (`reball_detector.py`, `sample_provider.py`, `value_composer.py`), update its hash in `registry.json`:
+Single-file modules in `registry.json` carry a `"sha256"` field checked by Knapset's `MarketplaceClient` before installation. If you edit a single-file module (`reball_detector.py`, `sample_provider.py`, `value_composer.py`), update its hash in `registry.json`:
 
 ```bash
 sha256sum modules/scam_analyser/reball_detector.py
@@ -68,8 +68,8 @@ The test suite in `tests/` (`82` tests total) verifies registry security validat
 - `test_fishing_extension.py` (`4` tests): Multi-slot fishing setup compatibility rules (rod/reel action balance, casting-weight overlap, line/drag safety) and set synthesis.
 - `test_pc_extension.py` (`43` tests) & `test_ram_form_factor.py` (`23` tests): Component databases, risk heuristics, combinatorial build optimization, and form-factor classification (details in [`modules/extensions/pc/README.md`](modules/extensions/pc/README.md)).
 
-Because extensions import core base classes (`domain_layout`, `domain_weights`) from `omniforge`, either keep `omniforge` as a sibling directory (`../omniforge`) or pass it on `PYTHONPATH`:
+Because extensions import core base classes (`domain_layout`, `domain_weights`) from `knapset`, either keep `knapset` as a sibling directory (`../knapset`) or pass it on `PYTHONPATH`:
 
 ```bash
-PYTHONPATH="/path/to/omniforge:." python3 -m unittest discover -s tests -v
+PYTHONPATH="/path/to/knapset:." python3 -m unittest discover -s tests -v
 ```

@@ -1,4 +1,4 @@
-# Contributing to OmniForge Registry
+# Contributing to Knapset Registry
 
 Thank you for contributing to the open module registry! This guide outlines how to create, test, and submit your plugins.
 

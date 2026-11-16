@@ -958,7 +958,7 @@ class PrebuiltEvaluator(BaseComponentAnalyser):
 
         curr = val.get("currency") or getattr(specs, "currency", "UAH") or "UAH"
         print("\n" + "═" * 80)
-        print("  OMNIFORGE PREBUILT EVALUATOR & MARKET DUEL")
+        print("  KNAPSET PREBUILT EVALUATOR & MARKET DUEL")
         print("═" * 80)
         print(f"  Listing       : {specs.title[:65]}")
         if specs.url:
@@ -1037,7 +1037,7 @@ class PrebuiltEvaluator(BaseComponentAnalyser):
         mode_title = report["mode_title"]
 
         print("\n" + "═" * 86)
-        print("  OMNIFORGE HEAD-TO-HEAD PREBUILT DUEL & COMPARATOR")
+        print("  KNAPSET HEAD-TO-HEAD PREBUILT DUEL & COMPARATOR")
         print("═" * 86)
         print(f"  Evaluation Mode: {mode_name.upper()} ({mode_title})")
         print(f"  [A] {s_a.title[:76]}")
@@ -1152,7 +1152,7 @@ def main(argv: Optional[List[str]] = None, prog: str = "python main.py pc compar
     args = parser.parse_args(clean_args)
 
     if not args.target:
-        print("\nOmniForge Prebuilt Evaluator & Head-to-Head Duel Comparator")
+        print("\nKnapset Prebuilt Evaluator & Head-to-Head Duel Comparator")
         print("═" * 84)
         print("Usage:")
         print(f"  • Single target duel vs market  : {prog} <target> [-M mode]")

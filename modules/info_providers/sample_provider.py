@@ -13,7 +13,7 @@ class SampleMarketProvider(BaseInfoProvider):
     source_domain = "example-market.org"
     default_currency = "USD"
     version = "1.0.0"
-    author = "omniforge-dev"
+    author = "knapset-dev"
     description = "Reference BaseInfoProvider skeleton returning deterministic sample listings"
     min_app_version = "1.0.0"
     category = "general"

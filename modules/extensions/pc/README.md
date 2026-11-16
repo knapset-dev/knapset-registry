@@ -1,6 +1,6 @@
-# Omniforge PC Hardware Extension (`pc`)
+# Knapset PC Hardware Extension (`pc`)
 
-This directory contains the `pc` domain extension for [Omniforge](https://github.com/omniforge-dev/omniforge). It screens second-hand and outlet PC component listings from normalized marketplace payloads (such as OLX, Telemart, eBay, and Blocket), matches messy seller titles against reference hardware databases, filters out defective or incompatible parts, and composes complete 5-part builds (`CPU + Motherboard + RAM + GPU + PSU`) within a budget.
+This directory contains the `pc` domain extension for [Knapset](https://github.com/knapset-dev/knapset). It screens second-hand and outlet PC component listings from normalized marketplace payloads (such as OLX, Telemart, eBay, and Blocket), matches messy seller titles against reference hardware databases, filters out defective or incompatible parts, and composes complete 5-part builds (`CPU + Motherboard + RAM + GPU + PSU`) within a budget.
 
 ---
 
@@ -31,7 +31,7 @@ Each of the five component categories has a reference database and a listing ana
 
 Given a budget in UAH and a build mode (`gaming-1080p`, `gaming-1440p`, `workstation`, `budget`, `quiet`, `compact-itx`, `upgrade-path`), `PCBuildOptimizer`:
 
-1. Loads candidates for all five slots from SQLite (`omniforge_market.db`) or JSON caches, converting non-UAH prices through `CurrencyService`.
+1. Loads candidates for all five slots from SQLite (`knapset_market.db`) or JSON caches, converting non-UAH prices through `CurrencyService`.
 2. Drops items with critical defect flags, incompatible form factors (`SODIMM`, `ECC_REG`, legacy `DDR1`/`DDR2`/`DDR3`), or PSU fire-hazard ratings (`Tier F`).
 3. Enforces hard compatibility across slots:
    - `CPU.socket == Motherboard.socket`

@@ -9,7 +9,7 @@ import unittest
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-_CORE_CANDIDATES = (REPO_ROOT.parent / "omniforge", REPO_ROOT.parent / "hardware-market-intelligence")
+_CORE_CANDIDATES = (REPO_ROOT.parent / "knapset", REPO_ROOT.parent / "hardware-market-intelligence")
 CORE_ROOT = next((p for p in _CORE_CANDIDATES if p.exists()), _CORE_CANDIDATES[0])
 if str(CORE_ROOT) not in sys.path:
     sys.path.insert(0, str(CORE_ROOT))

@@ -20,13 +20,13 @@ jobs:
       - name: Checkout Registry Repository
         uses: actions/checkout@v4
         with:
-          path: omniforge-registry
+          path: knapset-registry
 
-      - name: Checkout Core Microkernel
+      - name: Checkout Knapset Core
         uses: actions/checkout@v4
         with:
-          repository: omniforge-dev/omniforge
-          path: omniforge
+          repository: knapset-dev/knapset
+          path: knapset
           token: ${{ secrets.CORE_CHECKOUT_TOKEN || github.token }}
 
       - name: Set up Python ${{ matrix.python-version }}
@@ -35,16 +35,16 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Run AST Security & Submission Validator
-        working-directory: omniforge-registry
+        working-directory: knapset-registry
         run: |
           python3 scripts/validate_submission.py
 
       - name: Verify Master Index Consistency (registry.json)
-        working-directory: omniforge-registry
+        working-directory: knapset-registry
         run: |
           python3 scripts/build_index.py --check
 
       - name: Run Full Extension Test Suite
-        working-directory: omniforge-registry
+        working-directory: knapset-registry
         run: |
           python3 -m unittest discover tests

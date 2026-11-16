@@ -137,8 +137,8 @@ def compile_registry(repo_root: Path, write: bool = True) -> Dict[str, Any]:
 
     compiled = {
         "version": "1.0.0",
-        "name": "omniforge-registry",
-        "description": "Official open module & extension registry for OmniForge",
+        "name": "knapset-registry",
+        "description": "Official open module & extension registry for Knapset",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "modules": modules,
         "bundles": bundles,

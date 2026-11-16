@@ -142,7 +142,7 @@ class PCDomainExtension(BaseDomainExtension):
     def get_mcp_tools(self) -> List[Dict[str, Any]]:
         return [
             {
-                "name": "omniforge_evaluate_prebuilt_pc",
+                "name": "knapset_evaluate_prebuilt_pc",
                 "description": "Evaluate a ready-made PC listing or compare two prebuilt PC offers head-to-head against market fair value and DIY alternatives.",
                 "inputSchema": {
                     "type": "object",
@@ -170,7 +170,7 @@ class PCDomainExtension(BaseDomainExtension):
         ]
 
     def execute_mcp_tool(self, name: str, arguments: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        if name != "omniforge_evaluate_prebuilt_pc":
+        if name != "knapset_evaluate_prebuilt_pc":
             return None
         import json
 
