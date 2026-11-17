@@ -10,7 +10,7 @@
     "minimize": 13,
     "warning": 3,
     "muted": 4,
-    "selection_fg": 15,
+    "selection_fg": 14,
     "selection_bg": 0,
     "bar_fg": 7,
     "bar_bg": 0
@@ -21,7 +21,7 @@
     "minimize": "red",
     "warning": "yellow",
     "muted": "blue",
-    "selection_fg": "white",
+    "selection_fg": "cyan",
     "selection_bg": "black",
     "bar_fg": "white",
     "bar_bg": "black"

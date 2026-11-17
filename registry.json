@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T22:20:52.310175+00:00",
+  "generated_at": "2026-11-17T22:23:37.712308+00:00",
   "modules": [
     {
       "name": "cerebras_provider",
@@ -374,7 +374,7 @@
       ],
       "env_keys": [],
       "dependencies": [],
-      "sha256": "33d984d9e5a1c8a14bd5cf7880287c1bf82b78808449c2d9d652ffaed78bb31c"
+      "sha256": "f3e5f799b343c09d05af3ee9f930fd4d0494d23550c31ccb5b0721ddc6c519d8"
     },
     {
       "name": "tokyo-night",
