@@ -18,9 +18,15 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
+def _cli_prog() -> str:
+    exe = Path(sys.argv[0]).name if sys.argv else ""
+    return exe if exe in ("ks", "knapset") else "python3 main.py"
+
+
 def print_help() -> None:
+    prog = _cli_prog()
     print("\nPC Hardware Intelligence & System Optimization Suite\n")
-    print("Usage: python main.py pc <command> [options]\n")
+    print(f"Usage: {prog} pc <command> [options]\n")
     print("Commands:")
     print("  build    Synthesize optimal 5-part PC builds under budget")
     print("  compare  Head-to-head comparison duel of prebuilt listings vs alternatives or other prebuilts (aliases: eval, vs)")
@@ -35,13 +41,13 @@ def print_help() -> None:
     print("  audit    AI-verify top candidates across all component categories")
     print("  modes    List available PC optimization modes and weights\n")
     print("Examples:")
-    print("  python main.py pc build -b 850 -M sweet-spot")
-    print("  python main.py pc compare 'Ryzen 5 3600, RTX 2060, 450 USDT' vs 'i5 10400F, RTX 3060, 500 USDT' -M sweet-spot")
-    print("  python main.py pc compare 'Ryzen 5 3600, RTX 2060 Super, 450 USDT' -M value")
-    print("  python main.py pc eval 'Ryzen 5 3600, RTX 2060 Super, 450 USDT'")
-    print("  python main.py pc vs 'https://www.olx.ua/d/uk/obyavlenie/...'")
-    print("  python main.py pc gpu -q '3080' --no-ai")
-    print("  python main.py pc cpu --socket AM5 -t 16 --no-ai\n")
+    print(f"  {prog} pc build -b 850 -M sweet-spot")
+    print(f"  {prog} pc compare 'Ryzen 5 3600, RTX 2060, 450 USDT' vs 'i5 10400F, RTX 3060, 500 USDT' -M sweet-spot")
+    print(f"  {prog} pc compare 'Ryzen 5 3600, RTX 2060 Super, 450 USDT' -M value")
+    print(f"  {prog} pc eval 'Ryzen 5 3600, RTX 2060 Super, 450 USDT'")
+    print(f"  {prog} pc vs 'https://www.olx.ua/d/uk/obyavlenie/...'")
+    print(f"  {prog} pc gpu -q '3080' --no-ai")
+    print(f"  {prog} pc cpu --socket AM5 -t 16 --no-ai\n")
 
 
 def main(argv: Optional[List[str]] = None) -> None:
@@ -61,7 +67,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         PCDomainExtension().run_cli_search(extra)
     elif cmd in ("eval", "vs", "compare"):
         from extensions.pc.prebuilt_evaluator import main as eval_main
-        eval_main(extra, prog=f"python main.py pc {cmd}")
+        eval_main(extra, prog=f"{_cli_prog()} pc {cmd}")
     elif cmd == "audit":
         import extensions.pc.audit_pipeline as audit_pipeline
         audit_pipeline.main(extra)

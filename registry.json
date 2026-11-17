@@ -2,8 +2,31 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T18:21:05.706558+00:00",
+  "generated_at": "2026-11-17T18:29:39.767454+00:00",
   "modules": [
+    {
+      "name": "mistral_provider",
+      "subsystem": "ai_providers",
+      "domain": "general",
+      "version": "1.0.0",
+      "author": "knapset-dev",
+      "description": "Pure stdlib HTTPS client for Mistral AI chat completions (requires MISTRAL_API_KEY).",
+      "min_app_version": "1.0.0",
+      "trust_level": "verified",
+      "source_type": "single_file",
+      "download_url": "modules/ai_providers/mistral_provider.py",
+      "tags": [
+        "ai",
+        "llm",
+        "mistral",
+        "cloud"
+      ],
+      "env_keys": [
+        "MISTRAL_API_KEY"
+      ],
+      "sha256": "b9a399ca1b34e40ea9442033fc15d71e5ebb9dfc618e7fdcfd9bbb1752e95a70",
+      "dependencies": []
+    },
     {
       "name": "value_composer",
       "subsystem": "build_composer",
@@ -26,6 +49,28 @@
       "dependencies": []
     },
     {
+      "name": "nvme_ssd_analyser",
+      "subsystem": "component_analyser",
+      "domain": "hardware_pc",
+      "version": "1.0.0",
+      "author": "knapset-dev",
+      "description": "Identifies NVMe M.2 SSD models, capacities, read speeds, and PCIe interfaces from listings.",
+      "min_app_version": "1.0.0",
+      "trust_level": "verified",
+      "source_type": "single_file",
+      "download_url": "modules/component_analyser/nvme_ssd_analyser.py",
+      "tags": [
+        "pc",
+        "storage",
+        "ssd",
+        "nvme",
+        "specs"
+      ],
+      "env_keys": [],
+      "sha256": "922426f70300120345246e1a1879e998dbd9c7ec5e6d2b269c33f0b0195f8fe0",
+      "dependencies": []
+    },
+    {
       "name": "fishing",
       "subsystem": "extension",
       "domain": "fishing",
@@ -36,7 +81,7 @@
       "trust_level": "official",
       "source_type": "directory",
       "download_url": "modules/extensions/fishing",
-      "sha256": "209d2c357cedd9f655ad5227f273ea6153f4152e94b3e845566d27d484395b3c",
+      "sha256": "1585a3477f3d5869fba50c6d7e69b33db19d8a9382a1a66aca757fed9c5a3753",
       "tags": [
         "fishing",
         "outdoors",
@@ -67,7 +112,7 @@
       "trust_level": "official",
       "source_type": "directory",
       "download_url": "modules/extensions/pc",
-      "sha256": "d91056d0652a9a398050366057a9f6b76f8481b2ff9f0c1b3af2982a18547008",
+      "sha256": "8d6eddc4527237f38c1259d9d2633a8a6c5efba1cc366d62b1190172bbf084e8",
       "tags": [
         "pc",
         "hardware",
@@ -201,12 +246,13 @@
     },
     {
       "name": "pc-starter-kit",
-      "description": "Complete starter kit for PC hardware intelligence (PC builder domain & evaluator, sample data provider, reball scam analyzer, value optimizer)",
+      "description": "Complete starter kit for PC hardware intelligence (PC builder domain & evaluator, sample data provider, GPU reball & SSD wear scam analyzers, value optimizer)",
       "domain": "pc",
       "modules": [
         "pc",
         "sample_provider",
         "reball_detector",
+        "ssd_wear_detector",
         "value_composer"
       ],
       "tags": [

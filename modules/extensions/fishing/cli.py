@@ -25,6 +25,11 @@ from extensions.fishing.weights import create_fishing_scorer, create_fishing_wei
 from set_synthesizer import print_domain_sets, synthesize_domain_sets
 
 
+def _cli_prog() -> str:
+    exe = Path(sys.argv[0]).name if sys.argv else ""
+    return exe if exe in ("ks", "knapset") else "python3 main.py"
+
+
 def _run_build(argv: List[str]) -> None:
     from currency import canonical_currency, convert_currency, get_active_currency
 
@@ -32,7 +37,7 @@ def _run_build(argv: List[str]) -> None:
     default_budget = 150.0 if canonical_currency(active_curr) in ("USDT", "USD") else convert_currency(150.0, "USDT", active_curr)
 
     parser = argparse.ArgumentParser(
-        prog="main.py fishing build",
+        prog=f"{_cli_prog()} fishing build",
         description="Synthesize balanced fishing tackle sets under budget",
     )
     parser.add_argument("--domain", "-D", type=str, default="fishing", help="Domain identifier (default: fishing)")
@@ -82,7 +87,7 @@ def _run_search_category(section_id: str, argv: List[str]) -> None:
     sec_title = sec_obj.name if sec_obj else section_id.upper()
 
     parser = argparse.ArgumentParser(
-        prog=f"main.py fishing {section_id}",
+        prog=f"{_cli_prog()} fishing {section_id}",
         description=f"Search and filter {sec_title}",
     )
     parser.add_argument("--query", "-q", type=str, default=None, help="Keyword query (model, brand, title)")
@@ -163,7 +168,7 @@ def _run_search_category(section_id: str, argv: List[str]) -> None:
 
 def _run_modes(argv: List[str]) -> None:
     parser = argparse.ArgumentParser(
-        prog="main.py fishing modes",
+        prog=f"{_cli_prog()} fishing modes",
         description="List fishing optimization modes and weights",
     )
     parser.add_argument("--inspect", "-i", type=str, default=None, help="Inspect weights of a specific mode")
@@ -191,8 +196,9 @@ def _run_modes(argv: List[str]) -> None:
 
 
 def print_help() -> None:
+    prog = _cli_prog()
     print("\nFishing Tackle Set Synthesizer & Explorer\n")
-    print("Usage: python main.py fishing <command> [options]\n")
+    print(f"Usage: {prog} fishing <command> [options]\n")
     print("Commands:")
     print("  build    Synthesize optimal tackle sets under budget (spinning, feeder, carp)")
     print("  rod      Search and filter fishing rods (power, test range, brand, price)")
@@ -203,13 +209,13 @@ def print_help() -> None:
     print("  deals    Inspect verified historical seller price drops in SQLite MarketStore (alias: history)")
     print("  modes    List available optimization modes and weights")
     print("\nExamples:")
-    print("  python main.py fishing build -b 150 -M spinning-light")
-    print("  python main.py fishing build -b 200 -M feeder-distance")
-    print("  python main.py fishing rod --power Light -q Favorite")
-    print("  python main.py fishing reel --spool 2000")
-    print("  python main.py fishing bait --type MicroJig")
-    print("  python main.py fishing line --type 'PE 4x'")
-    print("  python main.py fishing modes -i feeder-distance\n")
+    print(f"  {prog} fishing build -b 150 -M spinning-light")
+    print(f"  {prog} fishing build -b 200 -M feeder-distance")
+    print(f"  {prog} fishing rod --power Light -q Favorite")
+    print(f"  {prog} fishing reel --spool 2000")
+    print(f"  {prog} fishing bait --type MicroJig")
+    print(f"  {prog} fishing line --type 'PE 4x'")
+    print(f"  {prog} fishing modes -i feeder-distance\n")
 
 
 def main(argv: Optional[List[str]] = None) -> None:

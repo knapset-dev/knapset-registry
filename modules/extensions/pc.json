@@ -9,7 +9,7 @@
   "trust_level": "official",
   "source_type": "directory",
   "download_url": "modules/extensions/pc",
-  "sha256": "d91056d0652a9a398050366057a9f6b76f8481b2ff9f0c1b3af2982a18547008",
+  "sha256": "8d6eddc4527237f38c1259d9d2633a8a6c5efba1cc366d62b1190172bbf084e8",
   "tags": [
     "pc",
     "hardware",

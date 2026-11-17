@@ -1,0 +1,14 @@
+{
+  "name": "mistral_provider",
+  "subsystem": "ai_providers",
+  "domain": "general",
+  "version": "1.0.0",
+  "author": "knapset-dev",
+  "description": "Pure stdlib HTTPS client for Mistral AI chat completions (requires MISTRAL_API_KEY).",
+  "min_app_version": "1.0.0",
+  "trust_level": "verified",
+  "source_type": "single_file",
+  "download_url": "modules/ai_providers/mistral_provider.py",
+  "tags": ["ai", "llm", "mistral", "cloud"],
+  "env_keys": ["MISTRAL_API_KEY"]
+}

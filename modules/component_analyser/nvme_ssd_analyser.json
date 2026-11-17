@@ -1,0 +1,14 @@
+{
+  "name": "nvme_ssd_analyser",
+  "subsystem": "component_analyser",
+  "domain": "hardware_pc",
+  "version": "1.0.0",
+  "author": "knapset-dev",
+  "description": "Identifies NVMe M.2 SSD models, capacities, read speeds, and PCIe interfaces from listings.",
+  "min_app_version": "1.0.0",
+  "trust_level": "verified",
+  "source_type": "single_file",
+  "download_url": "modules/component_analyser/nvme_ssd_analyser.py",
+  "tags": ["pc", "storage", "ssd", "nvme", "specs"],
+  "env_keys": []
+}
