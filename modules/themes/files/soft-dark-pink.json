@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "name": "soft-dark-pink",
+  "title": "Soft Dark Pink",
+  "author": "kurizachi",
+  "description": "Soft berry & rose-pink dark palette matching Kitty soft-dark-pink.conf",
+  "colors": {
+    "accent": 1,
+    "positive": 2,
+    "minimize": 13,
+    "warning": 3,
+    "muted": 7,
+    "selection_fg": 15,
+    "selection_bg": 0,
+    "bar_fg": 7,
+    "bar_bg": 0
+  },
+  "basic_colors": {
+    "accent": "red",
+    "positive": "green",
+    "minimize": "magenta",
+    "warning": "yellow",
+    "muted": "white",
+    "selection_fg": "white",
+    "selection_bg": "black",
+    "bar_fg": "white",
+    "bar_bg": "black"
+  },
+  "symbols": {
+    "fill": "█",
+    "half": "▌",
+    "empty": "░",
+    "cursor": "▸"
+  }
+}
