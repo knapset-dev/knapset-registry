@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T18:53:07.809785+00:00",
+  "generated_at": "2026-11-17T18:53:51.400631+00:00",
   "modules": [
     {
       "name": "cerebras_provider",
