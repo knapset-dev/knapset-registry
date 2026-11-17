@@ -1,78 +1,59 @@
 # Knapset Registry
 
-`knapset-registry` is the official plugin and domain-extension repository for [Knapset](https://github.com/knapset-dev/knapset). Knapset's core repository stays domain-agnostic (shipping only the minimal `template` domain); concrete domain logic across different verticals (PC hardware, fishing tackle, custom adapters, and defect analyzers) lives here and is installed on demand via `python3 main.py market install <id>`.
+`knapset-registry` is the official preset and theme repository for [Knapset v2](https://github.com/knapset-dev/knapset). Presets are declarative JSON (plus small sample datasets); themes are single JSON files for the TUI. Both install on demand with `ks reg`.
 
 ---
 
 ## Contents of `registry.json`
 
-| ID | Type | Domain | Status | Files | Description |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **`fishing`** | `domain_extension` | `fishing` | **Reference** | `modules/extensions/fishing/` | 4-slot fishing setup builder (`rod`, `reel`, `line`, `lure`) checking casting-weight overlap, rod/reel action balance, and line breaking strength vs reel drag. |
-| **`pc`** | `domain_extension` | `pc` | **Production** | `modules/extensions/pc/` | Full PC hardware analyzer and build optimizer (GPU, CPU, Motherboard, RAM, PSU, bundles, and prebuilt evaluator). See [`modules/extensions/pc/README.md`](modules/extensions/pc/README.md). |
-| **`reball_detector`** | `scam_analyser` | `hardware_pc` | **Standalone plugin** | `modules/scam_analyser/reball_detector.py` | Regex heuristic that flags GPU listings mentioning BGA reballing, chip heating/reflowing, flux residue, or modified mining vBIOS. |
-| **`ssd_wear_detector`** | `scam_analyser` | `hardware_pc` | **Standalone plugin** | `modules/scam_analyser/ssd_wear_detector/` | Flags used SSD listings that hide S.M.A.R.T. health, have critical bad blocks, or show Chia plotting / heavy TBW wear. |
-| **`sample_provider`** | `info_provider` | `general` | **Stub / Example** | `modules/info_providers/sample_provider.py` | Example `BaseInfoProvider` skeleton returning a deterministic sample listing. |
-| **`value_composer`** | `build_composer` | `hardware_pc` | **Stub / Example** | `modules/build_composer/value_composer.py` | Example `BaseBuildComposer` skeleton returning a static sample build dictionary. |
-| **`nvme_ssd_analyser`** | `component_analyser` | `hardware_pc` | **Reference** | `modules/component_analyser/nvme_ssd_analyser.py` | Identifies NVMe M.2 SSD models, capacities, read speeds, and PCIe interfaces from listing text. |
-| **`cerebras_provider`** | `ai_providers` | `general` | **Reference** | `modules/ai_providers/cerebras_provider.py` | Pure stdlib HTTPS client for Cerebras Cloud chat completions (`CEREBRAS_API_KEY`). |
+| ID | Type | Description |
+| :--- | :--- | :--- |
+| **`pc_build`** | `presets` | 5-part PC build optimizer (GPU, CPU, motherboard, PSU) with reference matching, limits, and compatibility rules. |
+| **`fishing_tackle`** | `presets` | 4-slot fishing setup (`rod`, `reel`, `line`, `lure`) with compatibility rules. |
+| **`nord`**, **`catppuccin-mocha`**, **`gruvbox-dark`**, **`tokyo-night`**, **`soft-dark-pink`** | `themes` | TUI color themes (named ANSI, 256-color, or `#RRGGBB`). |
 
 ### Bundles (`bundles/`)
 
-- **`photo-kit.json`** — minimal example bundle containing `sample_provider`.
-- **`pc-starter.json`** — lean PC starter bundle (`pc`, `sample_provider`, `reball_detector`, `value_composer`).
-- **`pc-starter-kit.json`** — complete PC starter kit adding `ssd_wear_detector` alongside the 4 starter modules.
-
-> **Note on standalone plugin wiring**: In the current architecture, `domain_extension` packages (`fishing`, `pc`) execute their own self-contained screening and synthesis pipelines when invoked via `python3 main.py <domain> ...`. Standalone `scam_analyser` and `build_composer` plugins register into Knapset's plugin registries independently.
+- **`starter-presets.json`** — `pc_build`, `fishing_tackle`, and `soft-dark-pink`.
 
 ---
 
 ## Using this registry with Knapset
 
-### From GitHub (default in Knapset)
-
-Knapset points to `https://raw.githubusercontent.com/knapset-dev/knapset-registry/main/registry.json` by default:
-
 ```bash
-cd /path/to/knapset
-python3 main.py module search
-python3 main.py module install fishing
-python3 main.py module install pc
+ks reg search
+ks reg search --type theme
+ks reg install preset:pc_build
+ks reg install theme:nord --use
 ```
 
-### From a local checkout (for development)
-
-If you are editing files in `knapset-registry` locally and want Knapset to install from your working tree:
+By default Knapset reads `https://raw.githubusercontent.com/knapset-dev/knapset-registry/main/registry.json`. A sibling `../knapset-registry` checkout is picked up automatically, or point at any directory/URL:
 
 ```bash
-export KNAPSET_REGISTRY_URL="file:///absolute/path/to/knapset-registry/registry.json"
-python3 main.py market install <extension-id>
+ks reg search --registry /absolute/path/to/knapset-registry
+export KNAPSET_REGISTRY=/absolute/path/to/knapset-registry
 ```
 
 ---
 
 ## Integrity and verification
 
-Single-file modules in `registry.json` carry a `"sha256"` field checked by Knapset's `MarketplaceClient` before installation. If you edit a single-file module (`reball_detector.py`, `sample_provider.py`, `value_composer.py`), update its hash in `registry.json`:
+Every entry in `registry.json` carries a `sha256`. Directory packages (presets) hash all files; single-file items (themes) hash the file. Regenerate and check the index with:
 
 ```bash
-sha256sum modules/scam_analyser/reball_detector.py
+python3 scripts/build_index.py
+python3 scripts/build_index.py --check
+python3 scripts/validate_submission.py
 ```
 
-Multi-file directory packages (`pc`, `fishing`, `ssd_wear_detector`) list `"files": [...]` in `registry.json` and are checked with Python's `ast.parse()` during installation to reject unauthorized system imports.
+Python plugin submissions (if any) are additionally AST-scanned for unsafe imports and calls.
 
 ---
 
 ## Running tests
 
-The test suite in `tests/` (`83` tests total) verifies registry security validation and bundled domain extensions:
-
-- `test_registry.py` (`13` tests): AST sandbox enforcement (`open` write bans, reflection/socket/pickle blocking), deterministic SHA-256 checksums, dependency specs, and index compilation (`registry.json`).
-- `test_fishing_extension.py` (`4` tests): Multi-slot fishing setup compatibility rules (rod/reel action balance, casting-weight overlap, line/drag safety) and set synthesis.
-- `test_pc_extension.py` (`43` tests) & `test_ram_form_factor.py` (`23` tests): Component databases, risk heuristics, combinatorial build optimization, and form-factor classification (details in [`modules/extensions/pc/README.md`](modules/extensions/pc/README.md)).
-
-Because extensions import core base classes (`domain_layout`, `domain_weights`) from `knapset`, either keep `knapset` as a sibling directory (`../knapset`) or pass it on `PYTHONPATH`:
-
 ```bash
-PYTHONPATH="/path/to/knapset:." python3 -m unittest discover -s tests -v
+python3 -m unittest discover tests -v
 ```
+
+`tests/test_registry.py` covers the AST sandbox rules, SHA-256 hashing, dependency specs, and index compilation.

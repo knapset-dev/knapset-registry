@@ -423,32 +423,6 @@ class TestRegistryTools(unittest.TestCase):
         self.assertEqual(mod["source_type"], "directory")
         self.assertEqual(mod["sha256"], compute_directory_hash(ext_dir))
 
-    def test_component_analyser_and_ai_provider_reference_modules(self):
-        ssd_manifest = REPO_ROOT / "modules" / "component_analyser" / "nvme_ssd_analyser.json"
-        ai_manifest = REPO_ROOT / "modules" / "ai_providers" / "cerebras_provider.json"
-
-        rep_ssd = validate_module_manifest(ssd_manifest, REPO_ROOT)
-        self.assertTrue(rep_ssd.is_valid, rep_ssd.violations)
-
-        rep_ai = validate_module_manifest(ai_manifest, REPO_ROOT)
-        self.assertTrue(rep_ai.is_valid, rep_ai.violations)
-
-        knapset_core = REPO_ROOT.parent / "knapset"
-        if str(knapset_core) not in sys.path:
-            sys.path.insert(0, str(knapset_core))
-
-        from modules.component_analyser.nvme_ssd_analyser import NVMeSSDAnalyser
-        from modules.ai_providers.cerebras_provider import CerebrasAIProvider
-
-        specs = NVMeSSDAnalyser().identify("Samsung 990 Pro 2TB M.2 NVMe")
-        self.assertIsNotNone(specs)
-        self.assertEqual(specs["capacity_gb"], 2000)
-        self.assertEqual(specs["interface"], "PCIe 4.0 x4")
-
-        provider = CerebrasAIProvider()
-        res = provider.complete("Inspect GPU")
-        self.assertEqual(res["verdict"], "ERROR")
-
 
 if __name__ == "__main__":
     unittest.main()

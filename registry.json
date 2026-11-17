@@ -2,184 +2,8 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T22:26:14.448200+00:00",
+  "generated_at": "2026-11-17T22:55:17.021228+00:00",
   "modules": [
-    {
-      "name": "cerebras_provider",
-      "subsystem": "ai_providers",
-      "domain": "general",
-      "version": "1.0.0",
-      "author": "knapset-dev",
-      "description": "Pure stdlib HTTPS client for Cerebras Cloud chat completions (requires CEREBRAS_API_KEY).",
-      "min_app_version": "1.0.0",
-      "trust_level": "verified",
-      "source_type": "single_file",
-      "download_url": "modules/ai_providers/cerebras_provider.py",
-      "tags": [
-        "ai",
-        "llm",
-        "cerebras",
-        "cloud"
-      ],
-      "env_keys": [
-        "CEREBRAS_API_KEY"
-      ],
-      "sha256": "73109aed20264760f03d16f6957231828cd37471d3ae80c0fee313d4a05012cb",
-      "dependencies": []
-    },
-    {
-      "name": "value_composer",
-      "subsystem": "build_composer",
-      "domain": "hardware_pc",
-      "version": "1.0.0",
-      "author": "HardwareCommunity",
-      "description": "Build synthesizer focused on maximum FPS per budget unit",
-      "min_app_version": "1.0.0",
-      "trust_level": "official",
-      "source_type": "single_file",
-      "download_url": "modules/build_composer/value_composer.py",
-      "sha256": "3517b0b478210064a82c883a6caadbf5f9e86ea704a1963dda643daf173a4643",
-      "tags": [
-        "pc",
-        "build",
-        "value",
-        "fps"
-      ],
-      "env_keys": [],
-      "dependencies": []
-    },
-    {
-      "name": "nvme_ssd_analyser",
-      "subsystem": "component_analyser",
-      "domain": "hardware_pc",
-      "version": "1.0.0",
-      "author": "knapset-dev",
-      "description": "Identifies NVMe M.2 SSD models, capacities, read speeds, and PCIe interfaces from listings.",
-      "min_app_version": "1.0.0",
-      "trust_level": "verified",
-      "source_type": "single_file",
-      "download_url": "modules/component_analyser/nvme_ssd_analyser.py",
-      "tags": [
-        "pc",
-        "storage",
-        "ssd",
-        "nvme",
-        "specs"
-      ],
-      "env_keys": [],
-      "sha256": "922426f70300120345246e1a1879e998dbd9c7ec5e6d2b269c33f0b0195f8fe0",
-      "dependencies": []
-    },
-    {
-      "name": "fishing",
-      "subsystem": "extension",
-      "domain": "fishing",
-      "version": "1.0.0",
-      "author": "knapset-dev",
-      "description": "Official Fishing Tackle Set Synthesizer Extension: matches rods, reels, lines, baits, and tackle accessories with balance and drag rules.",
-      "min_app_version": "1.0.0",
-      "trust_level": "official",
-      "source_type": "directory",
-      "download_url": "modules/extensions/fishing",
-      "sha256": "1585a3477f3d5869fba50c6d7e69b33db19d8a9382a1a66aca757fed9c5a3753",
-      "tags": [
-        "fishing",
-        "outdoors",
-        "tackle",
-        "synthesizer",
-        "official"
-      ],
-      "env_keys": [],
-      "dependencies": [],
-      "files": [
-        "__init__.py",
-        "cli.py",
-        "layout.py",
-        "market_data.py",
-        "search.py",
-        "sorter.py",
-        "weights.py"
-      ]
-    },
-    {
-      "name": "pc",
-      "subsystem": "extension",
-      "domain": "pc",
-      "version": "1.0.0",
-      "author": "knapset-dev",
-      "description": "Official PC Builder & Hardware Intelligence Extension: GPU, CPU, MOBO, RAM, and PSU analyzers with combinatorial build synthesis.",
-      "min_app_version": "1.0.0",
-      "trust_level": "official",
-      "source_type": "directory",
-      "download_url": "modules/extensions/pc",
-      "sha256": "512c660d76e17b1eb6f08dc73b95d5839a4550aaec687224846ce1c3726a8069",
-      "tags": [
-        "pc",
-        "hardware",
-        "builder",
-        "gaming",
-        "synthesizer",
-        "official"
-      ],
-      "env_keys": [],
-      "dependencies": [],
-      "files": [
-        "README.md",
-        "__init__.py",
-        "audit_pipeline.py",
-        "build_optimizer.py",
-        "bundle_detector.py",
-        "cli.py",
-        "cpu_ai_inspector.py",
-        "cpu_analyzer.py",
-        "cpu_database.py",
-        "cpu_scam_detector.py",
-        "gpu_ai_inspector.py",
-        "gpu_analyzer.py",
-        "gpu_database.py",
-        "gpu_scam_detector.py",
-        "human_review.py",
-        "layout.py",
-        "mobo_ai_inspector.py",
-        "mobo_analyzer.py",
-        "mobo_database.py",
-        "mobo_scam_detector.py",
-        "modes.py",
-        "prebuilt_evaluator.py",
-        "psu_ai_inspector.py",
-        "psu_analyzer.py",
-        "psu_database.py",
-        "psu_scam_detector.py",
-        "ram_ai_inspector.py",
-        "ram_analyzer.py",
-        "ram_database.py",
-        "ram_scam_detector.py",
-        "search.py",
-        "sorter.py",
-        "system_ai_inspector.py",
-        "weights.py"
-      ]
-    },
-    {
-      "name": "sample_provider",
-      "subsystem": "info_providers",
-      "domain": "general",
-      "version": "1.0.0",
-      "author": "knapset-dev",
-      "description": "Reference BaseInfoProvider skeleton returning deterministic sample listings",
-      "min_app_version": "1.0.0",
-      "trust_level": "verified",
-      "source_type": "single_file",
-      "download_url": "modules/info_providers/sample_provider.py",
-      "sha256": "15829bacafb66a249e970334f3ee5be995a65a82fb718c39fb7c1e332f0ffa55",
-      "tags": [
-        "sample",
-        "provider",
-        "reference"
-      ],
-      "env_keys": [],
-      "dependencies": []
-    },
     {
       "name": "fishing_tackle",
       "subsystem": "presets",
@@ -237,52 +61,6 @@
         "preset.json",
         "psu.csv"
       ]
-    },
-    {
-      "name": "reball_detector",
-      "subsystem": "scam_analyser",
-      "domain": "hardware_pc",
-      "version": "1.0.0",
-      "author": "HardwareCommunity",
-      "description": "Detects oven-baked, reballed, or damaged GPUs recovered after mining",
-      "min_app_version": "1.0.0",
-      "trust_level": "official",
-      "source_type": "single_file",
-      "download_url": "modules/scam_analyser/reball_detector.py",
-      "sha256": "001b6fff6cec3c27e0a1156d6431d1e313982ba6c65af1ecae53a5e4f2228154",
-      "tags": [
-        "gpu",
-        "scam",
-        "reball",
-        "safety"
-      ],
-      "env_keys": [],
-      "dependencies": []
-    },
-    {
-      "name": "ssd_wear_detector",
-      "subsystem": "scam_analyser",
-      "domain": "hardware_pc",
-      "version": "1.0.0",
-      "author": "HardwareCommunity",
-      "description": "Analyzes counterfeit SSD controllers and fake NAND capacity (packaged directory module)",
-      "min_app_version": "1.0.0",
-      "trust_level": "verified",
-      "source_type": "directory",
-      "download_url": "modules/scam_analyser/ssd_wear_detector",
-      "sha256": "2e51969606b149d1375fed88d9331d5637a75921978d16019456c301815bdddd",
-      "tags": [
-        "storage",
-        "ssd",
-        "scam",
-        "nand"
-      ],
-      "env_keys": [],
-      "files": [
-        "__init__.py",
-        "flash_chips.json"
-      ],
-      "dependencies": []
     },
     {
       "name": "catppuccin-mocha",
@@ -401,51 +179,18 @@
   ],
   "bundles": [
     {
-      "name": "pc-starter",
-      "description": "Base recommended bundle for PC hardware discovery and synthesis (domain extension with build/eval, provider, reball detector, value optimizer)",
-      "domain": "hardware_pc",
+      "name": "starter-presets",
+      "description": "Starter pack: PC build and fishing tackle presets plus the soft-dark-pink theme",
+      "domain": "general",
       "modules": [
-        "pc",
-        "sample_provider",
-        "reball_detector",
-        "value_composer"
+        "pc_build",
+        "fishing_tackle",
+        "soft-dark-pink"
       ],
       "tags": [
-        "pc",
         "starter",
+        "presets",
         "official"
-      ]
-    },
-    {
-      "name": "pc-starter-kit",
-      "description": "Complete starter kit for PC hardware intelligence (PC builder domain & evaluator, sample data provider, GPU reball & SSD wear scam analyzers, value optimizer)",
-      "domain": "pc",
-      "modules": [
-        "pc",
-        "sample_provider",
-        "reball_detector",
-        "ssd_wear_detector",
-        "value_composer"
-      ],
-      "tags": [
-        "pc",
-        "starter",
-        "kit",
-        "builder",
-        "evaluator",
-        "official"
-      ]
-    },
-    {
-      "name": "photo-kit",
-      "description": "Starter toolkit for photography equipment, lenses, and camera gear analysis",
-      "domain": "photo_video",
-      "modules": [
-        "sample_provider"
-      ],
-      "tags": [
-        "photo",
-        "cameras"
       ]
     }
   ]

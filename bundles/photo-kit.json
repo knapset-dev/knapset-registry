@@ -1,9 +1,0 @@
-{
-  "name": "photo-kit",
-  "description": "Starter toolkit for photography equipment, lenses, and camera gear analysis",
-  "domain": "photo_video",
-  "modules": [
-    "sample_provider"
-  ],
-  "tags": ["photo", "cameras"]
-}

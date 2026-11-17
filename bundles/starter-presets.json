@@ -1,0 +1,11 @@
+{
+  "name": "starter-presets",
+  "description": "Starter pack: PC build and fishing tackle presets plus the soft-dark-pink theme",
+  "domain": "general",
+  "modules": [
+    "pc_build",
+    "fishing_tackle",
+    "soft-dark-pink"
+  ],
+  "tags": ["starter", "presets", "official"]
+}
