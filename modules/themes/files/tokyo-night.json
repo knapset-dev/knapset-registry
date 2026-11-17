@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "name": "tokyo-night",
+  "title": "Tokyo Night",
+  "author": "knapset-dev",
+  "description": "Crisp neon indigo dark palette inspired by Tokyo night lights",
+  "colors": {
+    "accent": "#7dcfff",
+    "positive": "#9ece6a",
+    "minimize": "#f7768e",
+    "warning": "#e0af68",
+    "muted": "#a9b1d6",
+    "selection_fg": "#7aa2f7",
+    "selection_bg": "#292e42",
+    "bar_fg": "#c0caf5",
+    "bar_bg": "#1a1b26"
+  },
+  "basic_colors": {
+    "accent": "cyan",
+    "positive": "green",
+    "minimize": "magenta",
+    "warning": "yellow",
+    "muted": "blue",
+    "selection_fg": "cyan",
+    "selection_bg": "default",
+    "bar_fg": "white",
+    "bar_bg": "default"
+  },
+  "symbols": {
+    "fill": "█",
+    "half": "▌",
+    "empty": "░",
+    "cursor": "▸"
+  }
+}

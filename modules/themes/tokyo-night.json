@@ -1,0 +1,15 @@
+{
+  "name": "tokyo-night",
+  "subsystem": "themes",
+  "domain": "ui",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Crisp neon indigo Tokyo Night TUI theme for Knapset v2.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "single_file",
+  "download_url": "modules/themes/files/tokyo-night.json",
+  "tags": ["theme", "tui", "tokyo-night", "neon", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

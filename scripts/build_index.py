@@ -29,6 +29,8 @@ ALLOWED_SUBSYSTEMS = {
     "extensions",
     "preset",
     "presets",
+    "theme",
+    "themes",
 }
 
 

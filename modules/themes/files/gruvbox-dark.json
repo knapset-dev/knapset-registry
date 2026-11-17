@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "name": "gruvbox-dark",
+  "title": "Gruvbox Dark",
+  "author": "knapset-dev",
+  "description": "Retro groove warm palette with aqua, chartreuse green, mauve pink, and yellow",
+  "colors": {
+    "accent": "#8ec07c",
+    "positive": "#b8bb26",
+    "minimize": "#d3869b",
+    "warning": "#fabd2f",
+    "muted": "#a89984",
+    "selection_fg": "#83a598",
+    "selection_bg": "#3c3836",
+    "bar_fg": "#ebdbb2",
+    "bar_bg": "#282828"
+  },
+  "basic_colors": {
+    "accent": "cyan",
+    "positive": "green",
+    "minimize": "magenta",
+    "warning": "yellow",
+    "muted": "white",
+    "selection_fg": "yellow",
+    "selection_bg": "default",
+    "bar_fg": "white",
+    "bar_bg": "default"
+  },
+  "symbols": {
+    "fill": "█",
+    "half": "▌",
+    "empty": "░",
+    "cursor": "▸"
+  }
+}

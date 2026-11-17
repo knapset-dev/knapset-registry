@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "name": "catppuccin-mocha",
+  "title": "Catppuccin Mocha",
+  "author": "knapset-dev",
+  "description": "Soothing warm pastel dark palette with sky, green, pink, and peach accents",
+  "colors": {
+    "accent": "#89dceb",
+    "positive": "#a6e3a1",
+    "minimize": "#f5c2e7",
+    "warning": "#f9e2af",
+    "muted": "#a6adc8",
+    "selection_fg": "#b4befe",
+    "selection_bg": "#313244",
+    "bar_fg": "#cdd6f4",
+    "bar_bg": "#1e1e2e"
+  },
+  "basic_colors": {
+    "accent": "cyan",
+    "positive": "green",
+    "minimize": "magenta",
+    "warning": "yellow",
+    "muted": "white",
+    "selection_fg": "cyan",
+    "selection_bg": "default",
+    "bar_fg": "white",
+    "bar_bg": "default"
+  },
+  "symbols": {
+    "fill": "█",
+    "half": "▌",
+    "empty": "░",
+    "cursor": "▸"
+  }
+}

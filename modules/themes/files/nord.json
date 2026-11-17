@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "name": "nord",
+  "title": "Nord Frost",
+  "author": "knapset-dev",
+  "description": "Arctic, north-bluish clean dark palette inspired by Nord",
+  "colors": {
+    "accent": "#88c0d0",
+    "positive": "#a3be8c",
+    "minimize": "#b48ead",
+    "warning": "#ebcb8b",
+    "muted": "#81a1c1",
+    "selection_fg": "#8fbcbb",
+    "selection_bg": "#3b4252",
+    "bar_fg": "#eceff4",
+    "bar_bg": "#2e3440"
+  },
+  "basic_colors": {
+    "accent": "cyan",
+    "positive": "green",
+    "minimize": "magenta",
+    "warning": "yellow",
+    "muted": "blue",
+    "selection_fg": "cyan",
+    "selection_bg": "default",
+    "bar_fg": "white",
+    "bar_bg": "default"
+  },
+  "symbols": {
+    "fill": "█",
+    "half": "▌",
+    "empty": "░",
+    "cursor": "▸"
+  }
+}

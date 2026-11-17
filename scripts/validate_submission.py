@@ -34,6 +34,8 @@ ALLOWED_SUBSYSTEMS: Set[str] = {
     "extensions",
     "preset",
     "presets",
+    "theme",
+    "themes",
 }
 
 BANNED_MODULES: Set[str] = {
@@ -552,7 +554,10 @@ def validate_module_manifest(manifest_path: Path, repo_root: Path) -> Validation
     if not payload_path or not payload_path.exists():
         # Fallback to local sibling
         if source_type == "single_file":
-            payload_path = manifest_path.parent / f"{mod_name}.py"
+            if subsystem in ("theme", "themes"):
+                payload_path = manifest_path.parent / "files" / f"{mod_name}.json"
+            else:
+                payload_path = manifest_path.parent / f"{mod_name}.py"
         else:
             payload_path = manifest_path.parent / mod_name
 
@@ -583,16 +588,27 @@ def validate_module_manifest(manifest_path: Path, repo_root: Path) -> Validation
         if declared_sha and declared_sha.lower() != computed_sha.lower():
             report.violations.append(f"Directory SHA256 mismatch! Declared: {declared_sha}, Computed: {computed_sha}")
 
-    # 4. AST Security Analysis
-    py_files = [payload_path] if source_type == "single_file" else list(payload_path.rglob("*.py"))
+    # 4. Schema / AST Security Analysis
     visitor = _SecurityVisitor(subsystem=subsystem)
-
-    for pyf in py_files:
+    if subsystem in ("theme", "themes") and payload_path.is_file():
         try:
-            tree = ast.parse(pyf.read_text(encoding="utf-8"), filename=pyf.name)
-            visitor.visit(tree)
-        except SyntaxError as se:
-            report.violations.append(f"SyntaxError in {pyf.name}:{se.lineno}: {se.msg}")
+            t_data = json.loads(payload_path.read_text(encoding="utf-8"))
+            if not isinstance(t_data, dict) or not isinstance(t_data.get("colors"), dict):
+                report.violations.append(f"Invalid theme JSON in '{payload_path.name}': missing 'colors' object")
+        except Exception as exc:
+            report.violations.append(f"Malformed theme JSON in '{payload_path.name}': {exc}")
+    else:
+        if source_type == "single_file":
+            py_files = [payload_path] if payload_path.suffix.lower() == ".py" else []
+        else:
+            py_files = list(payload_path.rglob("*.py"))
+
+        for pyf in py_files:
+            try:
+                tree = ast.parse(pyf.read_text(encoding="utf-8"), filename=pyf.name)
+                visitor.visit(tree)
+            except SyntaxError as se:
+                report.violations.append(f"SyntaxError in {pyf.name}:{se.lineno}: {se.msg}")
 
     report.violations.extend(visitor.violations)
     report.warnings.extend(visitor.warnings)

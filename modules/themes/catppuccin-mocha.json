@@ -1,0 +1,15 @@
+{
+  "name": "catppuccin-mocha",
+  "subsystem": "themes",
+  "domain": "ui",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Warm pastel Catppuccin Mocha dark TUI theme for Knapset v2.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "single_file",
+  "download_url": "modules/themes/files/catppuccin-mocha.json",
+  "tags": ["theme", "tui", "catppuccin", "mocha", "pastel", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

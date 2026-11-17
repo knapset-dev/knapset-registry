@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T20:15:07.575251+00:00",
+  "generated_at": "2026-11-17T22:12:34.081277+00:00",
   "modules": [
     {
       "name": "cerebras_provider",
@@ -283,6 +283,96 @@
         "flash_chips.json"
       ],
       "dependencies": []
+    },
+    {
+      "name": "catppuccin-mocha",
+      "subsystem": "themes",
+      "domain": "ui",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Warm pastel Catppuccin Mocha dark TUI theme for Knapset v2.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "single_file",
+      "download_url": "modules/themes/files/catppuccin-mocha.json",
+      "tags": [
+        "theme",
+        "tui",
+        "catppuccin",
+        "mocha",
+        "pastel",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "8b1e69fbf5062823324a88f7d1e9dced0cff43382812617860deeda63fd963ab"
+    },
+    {
+      "name": "gruvbox-dark",
+      "subsystem": "themes",
+      "domain": "ui",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Warm retro Gruvbox Dark TUI theme for Knapset v2.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "single_file",
+      "download_url": "modules/themes/files/gruvbox-dark.json",
+      "tags": [
+        "theme",
+        "tui",
+        "gruvbox",
+        "retro",
+        "warm",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "131084e0e803f7bbb6e216bf321c46e128bc274401ba58947415c49cd274f354"
+    },
+    {
+      "name": "nord",
+      "subsystem": "themes",
+      "domain": "ui",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Arctic, north-bluish clean dark TUI theme for Knapset v2.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "single_file",
+      "download_url": "modules/themes/files/nord.json",
+      "tags": [
+        "theme",
+        "tui",
+        "nord",
+        "dark",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "5121b111853b7a96559c0ab1e7ae5d38ccca8af834fc267e0384e0b9686d2356"
+    },
+    {
+      "name": "tokyo-night",
+      "subsystem": "themes",
+      "domain": "ui",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Crisp neon indigo Tokyo Night TUI theme for Knapset v2.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "single_file",
+      "download_url": "modules/themes/files/tokyo-night.json",
+      "tags": [
+        "theme",
+        "tui",
+        "tokyo-night",
+        "neon",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "500738f588274172a5f59bea4e34fb96a3f7733c6377e3af8599ce5fd4333087"
     }
   ],
   "bundles": [
