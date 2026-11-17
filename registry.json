@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T18:53:51.400631+00:00",
+  "generated_at": "2026-11-17T20:15:07.575251+00:00",
   "modules": [
     {
       "name": "cerebras_provider",
@@ -179,6 +179,64 @@
       ],
       "env_keys": [],
       "dependencies": []
+    },
+    {
+      "name": "fishing_tackle",
+      "subsystem": "presets",
+      "domain": "fishing",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Knapset v2 declarative fishing tackle set optimizer with casting weight window and reel drag balance rules.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "directory",
+      "download_url": "modules/presets/fishing_tackle",
+      "tags": [
+        "fishing",
+        "outdoors",
+        "tackle",
+        "preset",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "5bc756abec4bac832e61834f849bb61a6835ff78e8fe70885ba554da805d662d",
+      "files": [
+        "line.csv",
+        "lure.csv",
+        "preset.json",
+        "reel.csv",
+        "rod.csv"
+      ]
+    },
+    {
+      "name": "pc_build",
+      "subsystem": "presets",
+      "domain": "hardware_pc",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Knapset v2 declarative PC build optimizer with Reference DB GPU matching, socket/wattage AST rules, and multi-profile weights.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "directory",
+      "download_url": "modules/presets/pc_build",
+      "tags": [
+        "pc",
+        "hardware",
+        "preset",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "8cc04b5c5d3a21895dfc5ba1cb8ec875519604f49a1c377772b6d3a28bf291e5",
+      "files": [
+        "cpu.csv",
+        "gpu.csv",
+        "gpu_ref.csv",
+        "mobo.csv",
+        "preset.json",
+        "psu.csv"
+      ]
     },
     {
       "name": "reball_detector",

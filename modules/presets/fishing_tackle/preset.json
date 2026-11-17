@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "name": "fishing_tackle",
+  "title": "Fishing Tackle Set Optimizer (v2 Preset)",
+  "description": "Synthesizes balanced Rod + Reel + Line + Lure kits satisfying casting weight and drag limits.",
+  "mode": "solve",
+  "default_profile": "finesse",
+  "sources": {
+    "rod": {"source": "rod.csv"},
+    "reel": {"source": "reel.csv"},
+    "line": {"source": "line.csv"},
+    "lure": {"source": "lure.csv"}
+  },
+  "limits": [
+    "sum(price) <= 220",
+    "sum(weight_g) <= 450"
+  ],
+  "rules": [
+    "lure.weight_g >= rod.cast_min_g and lure.weight_g <= rod.cast_max_g",
+    "reel.drag_kg >= line.strength_kg * 0.65"
+  ],
+  "profiles": {
+    "finesse": {
+      "weights": {
+        "rod.sensitivity": 0.4,
+        "reel.smoothness": 0.35,
+        "price": -0.25
+      }
+    },
+    "heavy_pike": {
+      "weights": {
+        "reel.drag_kg": 0.4,
+        "line.strength_kg": 0.35,
+        "price": -0.25
+      },
+      "limits": [
+        "sum(price) <= 300"
+      ]
+    }
+  }
+}

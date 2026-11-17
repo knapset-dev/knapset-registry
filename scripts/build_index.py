@@ -27,6 +27,8 @@ ALLOWED_SUBSYSTEMS = {
     "ai_providers",
     "extension",
     "extensions",
+    "preset",
+    "presets",
 }
 
 

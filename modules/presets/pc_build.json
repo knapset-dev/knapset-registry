@@ -1,0 +1,15 @@
+{
+  "name": "pc_build",
+  "subsystem": "presets",
+  "domain": "hardware_pc",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Knapset v2 declarative PC build optimizer with Reference DB GPU matching, socket/wattage AST rules, and multi-profile weights.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "directory",
+  "download_url": "modules/presets/pc_build",
+  "tags": ["pc", "hardware", "preset", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

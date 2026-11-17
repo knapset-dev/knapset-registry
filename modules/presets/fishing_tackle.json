@@ -1,0 +1,15 @@
+{
+  "name": "fishing_tackle",
+  "subsystem": "presets",
+  "domain": "fishing",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Knapset v2 declarative fishing tackle set optimizer with casting weight window and reel drag balance rules.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "directory",
+  "download_url": "modules/presets/fishing_tackle",
+  "tags": ["fishing", "outdoors", "tackle", "preset", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

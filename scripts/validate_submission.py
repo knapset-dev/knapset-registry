@@ -32,6 +32,8 @@ ALLOWED_SUBSYSTEMS: Set[str] = {
     "ai_providers",
     "extension",
     "extensions",
+    "preset",
+    "presets",
 }
 
 BANNED_MODULES: Set[str] = {

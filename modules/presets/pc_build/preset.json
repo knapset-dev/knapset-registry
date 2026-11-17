@@ -1,0 +1,60 @@
+{
+  "schema_version": "2.0",
+  "name": "pc_build",
+  "title": "PC Build Optimizer (v2 Preset)",
+  "description": "Synthesizes compatible CPU + Motherboard + GPU + PSU sets using reference benchmark matching, wattage safety, and signed weights.",
+  "mode": "solve",
+  "default_profile": "balanced",
+  "sources": {
+    "cpu": {"source": "cpu.csv"},
+    "mobo": {"source": "mobo.csv"},
+    "gpu": {"source": "gpu.csv", "ref": "gpu_ref"},
+    "psu": {"source": "psu.csv"}
+  },
+  "references": {
+    "gpu_ref": {
+      "source": "gpu_ref.csv",
+      "match": "title~model",
+      "strategy": "token",
+      "alias": "ref",
+      "on_unmatched": "drop"
+    }
+  },
+  "formulas": {
+    "value_index": "score / price"
+  },
+  "limits": [
+    "sum(price) <= 950"
+  ],
+  "rules": [
+    "cpu.socket == mobo.socket",
+    "psu.wattage >= (cpu.tdp + gpu.tdp) * 1.25",
+    "cpu.score / gpu.ref.score <= 1.25"
+  ],
+  "profiles": {
+    "balanced": {
+      "weights": {
+        "cpu.score": 0.3,
+        "gpu.ref.score": 0.45,
+        "price": -0.25
+      }
+    },
+    "gaming": {
+      "weights": {
+        "gpu.ref.score": 0.65,
+        "cpu.score": 0.2,
+        "price": -0.15
+      }
+    },
+    "budget": {
+      "weights": {
+        "price": -0.55,
+        "gpu.ref.score": 0.3,
+        "cpu.score": 0.15
+      },
+      "limits": [
+        "sum(price) <= 700"
+      ]
+    }
+  }
+}
