@@ -18,19 +18,19 @@ jobs:
 
     steps:
       - name: Checkout Registry Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: knapset-registry
 
       - name: Checkout Knapset Core
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: knapset-dev/knapset
           path: knapset
           token: ${{ secrets.CORE_CHECKOUT_TOKEN || github.token }}
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
 

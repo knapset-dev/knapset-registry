@@ -2,29 +2,29 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-17T18:32:24.503870+00:00",
+  "generated_at": "2026-11-17T18:53:07.809785+00:00",
   "modules": [
     {
-      "name": "mistral_provider",
+      "name": "cerebras_provider",
       "subsystem": "ai_providers",
       "domain": "general",
       "version": "1.0.0",
       "author": "knapset-dev",
-      "description": "Pure stdlib HTTPS client for Mistral AI chat completions (requires MISTRAL_API_KEY).",
+      "description": "Pure stdlib HTTPS client for Cerebras Cloud chat completions (requires CEREBRAS_API_KEY).",
       "min_app_version": "1.0.0",
       "trust_level": "verified",
       "source_type": "single_file",
-      "download_url": "modules/ai_providers/mistral_provider.py",
+      "download_url": "modules/ai_providers/cerebras_provider.py",
       "tags": [
         "ai",
         "llm",
-        "mistral",
+        "cerebras",
         "cloud"
       ],
       "env_keys": [
-        "MISTRAL_API_KEY"
+        "CEREBRAS_API_KEY"
       ],
-      "sha256": "b9a399ca1b34e40ea9442033fc15d71e5ebb9dfc618e7fdcfd9bbb1752e95a70",
+      "sha256": "73109aed20264760f03d16f6957231828cd37471d3ae80c0fee313d4a05012cb",
       "dependencies": []
     },
     {
@@ -112,7 +112,7 @@
       "trust_level": "official",
       "source_type": "directory",
       "download_url": "modules/extensions/pc",
-      "sha256": "8d6eddc4527237f38c1259d9d2633a8a6c5efba1cc366d62b1190172bbf084e8",
+      "sha256": "512c660d76e17b1eb6f08dc73b95d5839a4550aaec687224846ce1c3726a8069",
       "tags": [
         "pc",
         "hardware",

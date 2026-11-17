@@ -15,7 +15,7 @@
 | **`sample_provider`** | `info_provider` | `general` | **Stub / Example** | `modules/info_providers/sample_provider.py` | Example `BaseInfoProvider` skeleton returning a deterministic sample listing. |
 | **`value_composer`** | `build_composer` | `hardware_pc` | **Stub / Example** | `modules/build_composer/value_composer.py` | Example `BaseBuildComposer` skeleton returning a static sample build dictionary. |
 | **`nvme_ssd_analyser`** | `component_analyser` | `hardware_pc` | **Reference** | `modules/component_analyser/nvme_ssd_analyser.py` | Identifies NVMe M.2 SSD models, capacities, read speeds, and PCIe interfaces from listing text. |
-| **`mistral_provider`** | `ai_providers` | `general` | **Reference** | `modules/ai_providers/mistral_provider.py` | Pure stdlib HTTPS client for Mistral AI chat completions (`MISTRAL_API_KEY`). |
+| **`cerebras_provider`** | `ai_providers` | `general` | **Reference** | `modules/ai_providers/cerebras_provider.py` | Pure stdlib HTTPS client for Cerebras Cloud chat completions (`CEREBRAS_API_KEY`). |
 
 ### Bundles (`bundles/`)
 

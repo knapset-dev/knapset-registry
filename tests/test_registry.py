@@ -425,7 +425,7 @@ class TestRegistryTools(unittest.TestCase):
 
     def test_component_analyser_and_ai_provider_reference_modules(self):
         ssd_manifest = REPO_ROOT / "modules" / "component_analyser" / "nvme_ssd_analyser.json"
-        ai_manifest = REPO_ROOT / "modules" / "ai_providers" / "mistral_provider.json"
+        ai_manifest = REPO_ROOT / "modules" / "ai_providers" / "cerebras_provider.json"
 
         rep_ssd = validate_module_manifest(ssd_manifest, REPO_ROOT)
         self.assertTrue(rep_ssd.is_valid, rep_ssd.violations)
@@ -438,14 +438,14 @@ class TestRegistryTools(unittest.TestCase):
             sys.path.insert(0, str(knapset_core))
 
         from modules.component_analyser.nvme_ssd_analyser import NVMeSSDAnalyser
-        from modules.ai_providers.mistral_provider import MistralAIProvider
+        from modules.ai_providers.cerebras_provider import CerebrasAIProvider
 
         specs = NVMeSSDAnalyser().identify("Samsung 990 Pro 2TB M.2 NVMe")
         self.assertIsNotNone(specs)
         self.assertEqual(specs["capacity_gb"], 2000)
         self.assertEqual(specs["interface"], "PCIe 4.0 x4")
 
-        provider = MistralAIProvider()
+        provider = CerebrasAIProvider()
         res = provider.complete("Inspect GPU")
         self.assertEqual(res["verdict"], "ERROR")
 

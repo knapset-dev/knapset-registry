@@ -15,10 +15,16 @@ Motherboard, RAM, PSU) from live/cached OLX market listings using:
 import argparse
 import json
 import re
+import sys
 import time
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+
+
+def _cli_prog() -> str:
+    exe = Path(sys.argv[0]).name if sys.argv else ""
+    return exe if exe in ("ks", "knapset") else "python3 main.py"
 
 from ai_providers import list_provider_names
 from analyzer_core import fmt_deal_pct, get_status_badge, make_terminal_link, pad_ansi
@@ -1456,7 +1462,7 @@ def run_build_optimizer(
             filtered_gpus = [g for g in gpu_list if matches_lock_query(g, gpu_query)]
             if not filtered_gpus:
                 print(f"\nNo marketplace listings found matching locked GPU: '{gpu_query}'.")
-                print("   Tip: Check spelling (e.g. 'RTX 3080') or run 'python main.py sync -c gpu'.")
+                print(f"   Tip: Check spelling (e.g. 'RTX 3080') or run '{_cli_prog()} sync -c gpu'.")
                 return []
             gpu_list = filtered_gpus
             print(f"   Locked GPU (Marketplace): '{gpu_query}' ({len(gpu_list)} listings)")
@@ -1546,7 +1552,7 @@ def run_build_optimizer(
             filtered_cpus = [c for c in cpu_list if matches_lock_query(c, cpu_query)]
             if not filtered_cpus:
                 print(f"\nNo marketplace listings found matching locked CPU: '{cpu_query}'.")
-                print("   Tip: Check spelling (e.g. 'Ryzen 5 7500F') or run 'python main.py sync -c cpu'.")
+                print(f"   Tip: Check spelling (e.g. 'Ryzen 5 7500F') or run '{_cli_prog()} sync -c cpu'.")
                 return []
             cpu_list = filtered_cpus
             print(f"   Locked CPU (Marketplace): '{cpu_query}' ({len(cpu_list)} listings)")
@@ -1607,7 +1613,7 @@ def run_build_optimizer(
             filtered_mobos = [m for m in mobo_list if matches_lock_query(m, mobo_query)]
             if not filtered_mobos:
                 print(f"\nNo marketplace listings found matching locked Motherboard: '{mobo_query}'.")
-                print("   Tip: Check spelling (e.g. 'B650' or 'B550') or run 'python main.py sync -c mobo'.")
+                print(f"   Tip: Check spelling (e.g. 'B650' or 'B550') or run '{_cli_prog()} sync -c mobo'.")
                 return []
             mobo_list = filtered_mobos
             print(f"   Locked Motherboard (Marketplace): '{mobo_query}' ({len(mobo_list)} listings)")
@@ -1681,7 +1687,7 @@ def run_build_optimizer(
             filtered_rams = [r for r in ram_list if matches_lock_query(r, ram_query)]
             if not filtered_rams:
                 print(f"\nNo marketplace listings found matching locked RAM: '{ram_query}'.")
-                print("   Tip: Check spelling (e.g. '32GB DDR4' or 'DDR5') or run 'python main.py sync -c ram'.")
+                print(f"   Tip: Check spelling (e.g. '32GB DDR4' or 'DDR5') or run '{_cli_prog()} sync -c ram'.")
                 return []
             ram_list = filtered_rams
             print(f"   Locked RAM (Marketplace): '{ram_query}' ({len(ram_list)} listings)")
@@ -1738,7 +1744,7 @@ def run_build_optimizer(
             filtered_psus = [p for p in psu_list if matches_lock_query(p, psu_query)]
             if not filtered_psus:
                 print(f"\nNo marketplace listings found matching locked PSU: '{psu_query}'.")
-                print("   Tip: Check spelling (e.g. '750W' or 'Seasonic') or run 'python main.py sync -c psu'.")
+                print(f"   Tip: Check spelling (e.g. '750W' or 'Seasonic') or run '{_cli_prog()} sync -c psu'.")
                 return []
             psu_list = filtered_psus
             print(f"   Locked PSU (Marketplace): '{psu_query}' ({len(psu_list)} listings)")
@@ -1814,7 +1820,7 @@ def run_build_optimizer(
 
     if not has_standalone_components and not has_prebuilt_or_complete_bundles:
         print("\nInsufficient verified components in local cache for these constraints.")
-        print("   Tip: Run 'python main.py sync' or adjust --budget / --mode / --socket.")
+        print(f"   Tip: Run '{_cli_prog()} sync' or adjust --budget / --mode / --socket.")
         return []
 
     if human_review:

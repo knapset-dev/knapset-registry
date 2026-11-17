@@ -97,7 +97,7 @@ On multi-thousand-listing secondary market samples where sellers omit form-facto
 
 ---
 
-## CLI commands (`python3 main.py pc ...`)
+## CLI commands (`ks pc ...` / `python3 main.py pc ...`)
 
 | Command | Example |
 | :--- | :--- |

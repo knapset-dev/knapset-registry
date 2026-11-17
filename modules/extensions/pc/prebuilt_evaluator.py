@@ -1117,7 +1117,12 @@ class PrebuiltEvaluator(BaseComponentAnalyser):
 import argparse
 
 
-def main(argv: Optional[List[str]] = None, prog: str = "python main.py pc compare") -> None:
+def _cli_prog() -> str:
+    exe = Path(sys.argv[0]).name if sys.argv else ""
+    return exe if exe in ("ks", "knapset") else "python3 main.py"
+
+
+def main(argv: Optional[List[str]] = None, prog: Optional[str] = None) -> None:
     args_list = list(sys.argv[1:] if argv is None else argv)
 
     # 1. Intercept "vs" / "проти" separator if supplied as token
@@ -1134,7 +1139,7 @@ def main(argv: Optional[List[str]] = None, prog: str = "python main.py pc compar
         i += 1
 
     parser = argparse.ArgumentParser(
-        prog=prog,
+        prog=prog or f"{_cli_prog()} pc compare",
         description="Head-to-head comparison duel of prebuilt PC listings vs market alternatives or other prebuilts with active mode scoring.",
     )
     parser.add_argument("target", nargs="?", default=None, help="First listing URL, cached ID, or spec text")
