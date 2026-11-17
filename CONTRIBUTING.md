@@ -1,6 +1,6 @@
 # Contributing to Knapset Registry
 
-Thank you for contributing to the open module registry! This guide outlines how to create, test, and submit your plugins.
+Thank you for contributing to the open module registry! This guide outlines how to create, test, and submit presets, themes, and plugins.
 
 ---
 
@@ -41,7 +41,7 @@ python3 scripts/validate_submission.py
 python3 scripts/build_index.py
 ```
 
-### 4. Submit Pull Request
+### 3. Submit Pull Request
 Push your changes to your fork and submit a PR to `main`.
 The automated GitHub Actions bot will:
 - Run AST security scanner.
