@@ -170,12 +170,14 @@ def main() -> None:
         generated = compile_registry(root, write=False)
 
         # Ignore generated_at timestamp for comparison
+        current_meta = {k: current.get(k) for k in ("version", "name", "description")}
+        gen_meta = {k: generated.get(k) for k in ("version", "name", "description")}
         current_mods = current.get("modules", [])
         gen_mods = generated.get("modules", [])
         current_bundles = current.get("bundles", [])
         gen_bundles = generated.get("bundles", [])
 
-        if current_mods != gen_mods or current_bundles != gen_bundles:
+        if current_meta != gen_meta or current_mods != gen_mods or current_bundles != gen_bundles:
             print("registry.json is out-of-date! Run python3 scripts/build_index.py to refresh.", file=sys.stderr)
             sys.exit(1)
         print("registry.json is up-to-date.")

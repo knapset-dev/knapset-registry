@@ -32,9 +32,9 @@ Knapset points to `https://raw.githubusercontent.com/knapset-dev/knapset-registr
 
 ```bash
 cd /path/to/knapset
-python3 main.py market list
-python3 main.py market install fishing
-python3 main.py market install pc
+python3 main.py module search
+python3 main.py module install fishing
+python3 main.py module install pc
 ```
 
 ### From a local checkout (for development)
