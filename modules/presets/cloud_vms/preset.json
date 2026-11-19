@@ -1,0 +1,49 @@
+{
+  "schema_version": "2.0",
+  "name": "cloud_vms",
+  "title": "Cloud VM Price-Performance Ranker (Rank Preset)",
+  "description": "Ranks cloud VM instances enriched with a Reference DB of CPU family benchmarks using derived perf-per-dollar formulas.",
+  "mode": "rank",
+  "default_profile": "best_value",
+  "sources": {
+    "vms": {"source": "vms.csv", "ref": "cpu_bench"}
+  },
+  "references": {
+    "cpu_bench": {
+      "source": "cpu_bench.csv",
+      "match": "cpu_family~family",
+      "strategy": "token",
+      "alias": "ref",
+      "on_unmatched": "drop"
+    }
+  },
+  "formulas": {
+    "total_compute": "ref.single_score * vcpu",
+    "perf_per_dollar": "(ref.single_score * vcpu) / monthly_usd"
+  },
+  "where": [
+    "ram_gb >= 8"
+  ],
+  "profiles": {
+    "best_value": {
+      "weights": {
+        "perf_per_dollar": 0.55,
+        "ram_gb": 0.2,
+        "monthly_usd": -0.25
+      }
+    },
+    "max_compute": {
+      "weights": {
+        "total_compute": 0.65,
+        "ram_gb": 0.2,
+        "monthly_usd": -0.15
+      }
+    },
+    "low_cost": {
+      "weights": {
+        "monthly_usd": -0.6,
+        "perf_per_dollar": 0.4
+      }
+    }
+  }
+}

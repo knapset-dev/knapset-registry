@@ -2,8 +2,65 @@
   "version": "1.0.0",
   "name": "knapset-registry",
   "description": "Official open module & extension registry for Knapset",
-  "generated_at": "2026-11-18T20:56:14.434339+00:00",
+  "generated_at": "2026-11-19T17:44:25.001422+00:00",
   "modules": [
+    {
+      "name": "camera_kit",
+      "subsystem": "presets",
+      "domain": "photography",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Knapset v2 multi-slot photography kit optimizer enforcing lens mount compatibility, bag weight capacity, and budget/weight caps.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "directory",
+      "download_url": "modules/presets/camera_kit",
+      "tags": [
+        "camera",
+        "photography",
+        "solve",
+        "preset",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "772fd8334ecf7c9813e3a64fe1159f293769b06f9c3ff43ec4148aa4294439c8",
+      "files": [
+        "bag.csv",
+        "body.csv",
+        "lens.csv",
+        "preset.json",
+        "tripod.csv"
+      ]
+    },
+    {
+      "name": "cloud_vms",
+      "subsystem": "presets",
+      "domain": "cloud_infra",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Knapset v2 single-table VM ranking preset with Reference DB CPU benchmark matching and price-performance formulas.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "directory",
+      "download_url": "modules/presets/cloud_vms",
+      "tags": [
+        "cloud",
+        "vms",
+        "rank",
+        "reference-db",
+        "preset",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "4b09982046233ed536c50a7aa32899345428de80667eabebb1cd8308ea268351",
+      "files": [
+        "cpu_bench.csv",
+        "preset.json",
+        "vms.csv"
+      ]
+    },
     {
       "name": "fishing_tackle",
       "subsystem": "presets",
@@ -31,6 +88,32 @@
         "preset.json",
         "reel.csv",
         "rod.csv"
+      ]
+    },
+    {
+      "name": "meal_prep",
+      "subsystem": "presets",
+      "domain": "nutrition",
+      "version": "2.0.0",
+      "author": "knapset-dev",
+      "description": "Knapset v2 bounded knapsack meal-prep basket optimizer balancing protein, fiber, calories, and grocery cost.",
+      "min_app_version": "2.0.0",
+      "trust_level": "official",
+      "source_type": "directory",
+      "download_url": "modules/presets/meal_prep",
+      "tags": [
+        "nutrition",
+        "basket",
+        "knapsack",
+        "preset",
+        "v2"
+      ],
+      "env_keys": [],
+      "dependencies": [],
+      "sha256": "5781721feb23e8fff0fda26907ae99a58a56f1d3f937b5a55625ebf66efa84ea",
+      "files": [
+        "foods.csv",
+        "preset.json"
       ]
     },
     {
@@ -180,11 +263,14 @@
   "bundles": [
     {
       "name": "starter-presets",
-      "description": "Starter pack: PC build and fishing tackle presets plus the soft-dark-pink theme",
+      "description": "Starter pack: PC build, fishing tackle, meal prep, cloud VMs, and camera kit presets plus the soft-dark-pink theme",
       "domain": "general",
       "modules": [
         "pc_build",
         "fishing_tackle",
+        "meal_prep",
+        "cloud_vms",
+        "camera_kit",
         "soft-dark-pink"
       ],
       "tags": [

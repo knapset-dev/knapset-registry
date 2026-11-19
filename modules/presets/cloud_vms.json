@@ -1,0 +1,15 @@
+{
+  "name": "cloud_vms",
+  "subsystem": "presets",
+  "domain": "cloud_infra",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Knapset v2 single-table VM ranking preset with Reference DB CPU benchmark matching and price-performance formulas.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "directory",
+  "download_url": "modules/presets/cloud_vms",
+  "tags": ["cloud", "vms", "rank", "reference-db", "preset", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

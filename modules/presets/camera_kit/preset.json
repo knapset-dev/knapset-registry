@@ -1,0 +1,45 @@
+{
+  "schema_version": "2.0",
+  "name": "camera_kit",
+  "title": "Photography Camera Kit Optimizer (Solve Preset)",
+  "description": "Synthesizes compatible Body + Lens + Tripod + Bag kits satisfying mount compatibility, bag payload limits, and travel weight caps.",
+  "mode": "solve",
+  "default_profile": "travel",
+  "sources": {
+    "body": {"source": "body.csv"},
+    "lens": {"source": "lens.csv"},
+    "tripod": {"source": "tripod.csv"},
+    "bag": {"source": "bag.csv"}
+  },
+  "limits": [
+    "sum(price) <= 2600",
+    "sum(weight_g) <= 2800"
+  ],
+  "rules": [
+    "body.mount == lens.mount",
+    "bag.max_load_g >= body.weight_g + lens.weight_g",
+    "tripod.max_load_g >= (body.weight_g + lens.weight_g) * 1.5"
+  ],
+  "profiles": {
+    "travel": {
+      "weights": {
+        "body.iq_score": 0.3,
+        "lens.sharpness": 0.3,
+        "weight_g": -0.25,
+        "price": -0.15
+      }
+    },
+    "studio": {
+      "weights": {
+        "body.iq_score": 0.4,
+        "lens.sharpness": 0.4,
+        "tripod.stability": 0.1,
+        "price": -0.1
+      },
+      "limits": [
+        "sum(price) <= 3600",
+        "sum(weight_g) <= 4500"
+      ]
+    }
+  }
+}

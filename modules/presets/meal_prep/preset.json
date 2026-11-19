@@ -1,0 +1,48 @@
+{
+  "schema_version": "2.0",
+  "name": "meal_prep",
+  "title": "Daily Meal Prep Optimizer (Basket Preset)",
+  "description": "Packs an optimal daily food basket (bounded knapsack) hitting protein and fiber targets within budget and calorie caps.",
+  "mode": "basket",
+  "default_profile": "high_protein",
+  "max_per_item": 2,
+  "sources": {
+    "foods": {"source": "foods.csv"}
+  },
+  "formulas": {
+    "protein_per_dollar": "protein_g / price"
+  },
+  "limits": [
+    "sum(price) <= 18",
+    "sum(calories) <= 2100",
+    "sum(protein_g) >= 120"
+  ],
+  "profiles": {
+    "high_protein": {
+      "weights": {
+        "protein_g": 0.55,
+        "fiber_g": 0.2,
+        "price": -0.25
+      }
+    },
+    "budget_cut": {
+      "weights": {
+        "protein_per_dollar": 0.5,
+        "fiber_g": 0.2,
+        "price": -0.3
+      },
+      "limits": [
+        "sum(price) <= 13",
+        "sum(calories) <= 1800",
+        "sum(protein_g) >= 110"
+      ]
+    },
+    "high_fiber": {
+      "weights": {
+        "fiber_g": 0.5,
+        "protein_g": 0.3,
+        "price": -0.2
+      }
+    }
+  }
+}

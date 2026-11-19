@@ -1,0 +1,15 @@
+{
+  "name": "camera_kit",
+  "subsystem": "presets",
+  "domain": "photography",
+  "version": "2.0.0",
+  "author": "knapset-dev",
+  "description": "Knapset v2 multi-slot photography kit optimizer enforcing lens mount compatibility, bag weight capacity, and budget/weight caps.",
+  "min_app_version": "2.0.0",
+  "trust_level": "official",
+  "source_type": "directory",
+  "download_url": "modules/presets/camera_kit",
+  "tags": ["camera", "photography", "solve", "preset", "v2"],
+  "env_keys": [],
+  "dependencies": []
+}

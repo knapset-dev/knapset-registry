@@ -1,0 +1,6 @@
+family,single_score,efficiency_tier
+AMD EPYC Genoa,1950,95
+AMD EPYC Milan,1550,82
+AWS Graviton3,1680,96
+Intel Xeon Cascade,1150,65
+Ampere Altra,1320,92

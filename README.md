@@ -8,13 +8,16 @@
 
 | ID | Type | Description |
 | :--- | :--- | :--- |
-| **`pc_build`** | `presets` | 5-part PC build optimizer (GPU, CPU, motherboard, PSU) with reference matching, limits, and compatibility rules. |
-| **`fishing_tackle`** | `presets` | 4-slot fishing setup (`rod`, `reel`, `line`, `lure`) with compatibility rules. |
+| **`pc_build`** | `presets` | 4-slot PC build optimizer (CPU, motherboard, GPU, PSU) with reference matching, limits, and compatibility rules (`solve`). |
+| **`fishing_tackle`** | `presets` | 4-slot fishing setup (`rod`, `reel`, `line`, `lure`) with compatibility rules (`solve`). |
+| **`meal_prep`** | `presets` | Bounded knapsack daily meal-prep basket hitting protein & fiber goals under budget/calorie caps (`basket`). |
+| **`cloud_vms`** | `presets` | Cloud VM price-performance ranker with Reference DB CPU benchmark enrichment (`rank`). |
+| **`camera_kit`** | `presets` | 4-slot camera kit optimizer (`body`, `lens`, `tripod`, `bag`) enforcing mount compatibility & payload/weight caps (`solve`). |
 | **`nord`**, **`catppuccin-mocha`**, **`gruvbox-dark`**, **`tokyo-night`**, **`soft-dark-pink`** | `themes` | TUI color themes (named ANSI, 256-color, or `#RRGGBB`). |
 
 ### Bundles (`bundles/`)
 
-- **`starter-presets.json`** — `pc_build`, `fishing_tackle`, and `soft-dark-pink`.
+- **`starter-presets.json`** — `pc_build`, `fishing_tackle`, `meal_prep`, `cloud_vms`, `camera_kit`, and `soft-dark-pink`.
 
 ---
 

@@ -1,0 +1,10 @@
+instance,provider,cpu_family,vcpu,ram_gb,nvme_gb,monthly_usd
+cpx31,Hetzner,AMD EPYC Genoa,4,8,160,15.5
+ccx23,Hetzner,AMD EPYC Milan,4,16,160,29.0
+c7a.xlarge,AWS,AMD EPYC Genoa,4,8,0,149.0
+c7g.xlarge,AWS,AWS Graviton3,4,8,0,106.0
+n2d-std-4,GCP,AMD EPYC Milan,4,16,0,124.0
+s-4vcpu-8gb,DigitalOcean,Intel Xeon Cascade,4,8,160,48.0
+vm-a1-flex,Oracle,Ampere Altra,4,16,100,22.0
+cx42,Hetzner,Intel Xeon Cascade,8,16,160,19.5
+c7a.2xlarge,AWS,AMD EPYC Genoa,8,16,0,298.0
